@@ -13,7 +13,7 @@ public class modItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, FalloutMod.MOD_ID);
     public static final RegistryObject<Item> CAP = ITEMS.register("cap",
-            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+            () -> new Item(new Item.Properties().tab(modCreativeModeTab.FALLOUT_TAB)));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus );
