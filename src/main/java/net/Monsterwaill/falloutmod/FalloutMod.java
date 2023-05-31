@@ -2,6 +2,7 @@ package net.Monsterwaill.falloutmod;
 
 
 import com.mojang.logging.LogUtils;
+import net.Monsterwaill.falloutmod.block.modBlocks;
 import net.Monsterwaill.falloutmod.item.modItems;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
@@ -38,6 +39,7 @@ public class FalloutMod {
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
     }
+
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
