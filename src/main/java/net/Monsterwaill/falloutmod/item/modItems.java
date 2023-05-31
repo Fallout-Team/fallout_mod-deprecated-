@@ -14,6 +14,8 @@ public class modItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, FalloutMod.MOD_ID);
     public static final RegistryObject<Item> CAP = ITEMS.register("cap",
             () -> new Item(new Item.Properties().tab(modCreativeModeTab.FALLOUT_TAB)));
+    public static final RegistryObject<Item> HOLOTAPE = ITEMS.register("holotape",
+            () -> new Item(new Item.Properties().tab(modCreativeModeTab.FALLOUT_TAB)));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus );
