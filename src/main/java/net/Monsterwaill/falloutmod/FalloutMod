@@ -1,4 +1,4 @@
-package net.Monsterwaill.falloutmod;
+package net.monsterwaill.falloutmod;
 
 
 import com.mojang.logging.LogUtils;
@@ -15,12 +15,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(Fallout_Mod.MOD_ID)
-public class Fallout_Mod {
+@Mod(FalloutMod.MOD_ID)
+public class FalloutMod {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "falloutmod";
     private static final Logger LOGGER = LogUtils.getLogger();
-    public Fallout_Mod()
+    public FalloutMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
