@@ -7,7 +7,7 @@ public class modCreativeModeTab {
     public static final CreativeModeTab FALLOUT_TAB = new CreativeModeTab("fallouttab") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(modItems.CAP.get());
+            return new ItemStack(modItems.CREATIVETAB.get());
         }
     };
 }

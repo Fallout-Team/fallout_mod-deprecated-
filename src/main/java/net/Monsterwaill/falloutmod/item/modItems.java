@@ -15,7 +15,9 @@ public class modItems {
     public static final RegistryObject<Item> CAP = ITEMS.register("cap",
             () -> new Item(new Item.Properties().tab(modCreativeModeTab.FALLOUT_TAB)));
     public static final RegistryObject<Item> HOLOTAPE = ITEMS.register("holotape",
-            () -> new Item(new Item.Properties().tab(modCreativeModeTab.FALLOUT_TAB)));
+            () -> new Item(new Item.Properties().tab(modCreativeModeTab.FALLOUT_TAB).stacksTo(1)));
+    public static final RegistryObject<Item> CREATIVETAB = ITEMS.register("creativetab",
+            () -> new NotHoldableItem(new Item.Properties(.tab(modCreativeModeTab.FALLOUT_TAB))));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus );
