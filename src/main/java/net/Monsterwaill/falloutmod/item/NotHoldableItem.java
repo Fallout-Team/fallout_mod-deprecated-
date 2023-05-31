@@ -9,6 +9,9 @@ public class NotHoldableItem extends Item {
     public NotHoldableItem(Properties properties) {
         super(properties);
     }
+    public NotHoldableItem() {
+        super(new Properties());
+    }
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int p_41407_, boolean p_41408_) {
