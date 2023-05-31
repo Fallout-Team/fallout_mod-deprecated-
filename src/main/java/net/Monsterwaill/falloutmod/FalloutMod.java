@@ -1,4 +1,4 @@
-package net.monsterwaill.falloutmod;
+package net.Monsterwaill.falloutmod;
 
 
 import com.mojang.logging.LogUtils;
