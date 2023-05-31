@@ -15,7 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(FalloutdMod.MOD_ID)
+@Mod(FalloutMod.MOD_ID)
 public class FalloutMod {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "falloutmod";
