@@ -2,8 +2,8 @@ package net.Monsterwaill.falloutmod;
 
 
 import com.mojang.logging.LogUtils;
-import net.Monsterwaill.falloutmod.block.modBlocks;
-import net.Monsterwaill.falloutmod.item.modItems;
+import net.Monsterwaill.falloutmod.block.FalloutBlocks;
+import net.Monsterwaill.falloutmod.item.FalloutItems;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,8 +26,8 @@ public class FalloutMod {
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        modItems.register(modEventBus);
-        modBlocks.register(modEventBus);
+        FalloutItems.register(modEventBus);
+        FalloutBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
