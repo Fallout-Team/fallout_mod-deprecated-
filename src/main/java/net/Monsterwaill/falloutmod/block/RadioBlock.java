@@ -1,7 +1,10 @@
 package net.Monsterwaill.falloutmod.block;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.sounds.SoundManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -31,6 +34,7 @@ public class RadioBlock extends HorizontalDirectionalBlock {
     public static final VoxelShape SOUTH_AABB = Block.box(0, 0, 2.5, 16, 12, 13.5);
     public static final VoxelShape WEST_AABB = Block.box(2.5, 0, 0, 13.5, 12, 16);;
 
+    private boolean isPlaying;
 
     // Make sure the radio has the correct facings set in its blockstate
     // And also make sure its render_type is cutout
@@ -98,9 +102,14 @@ public class RadioBlock extends HorizontalDirectionalBlock {
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         // Example code - Plays a random song
-
-        level.playSound(null, pos, getRandomDiscSound(), SoundSource.MUSIC, 1f,1f);
-
+        if(this.isPlaying == false){
+            level.playSound(null, pos, getRandomDiscSound(), SoundSource.MUSIC, 1f,1f);
+            this.isPlaying = true;
+        }
+        else{
+            this.isPlaying = false;
+            Minecraft.getInstance().getSoundManager().reload();
+        }
         return InteractionResult.SUCCESS;
     }
 }
