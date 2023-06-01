@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.sounds.SoundManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -27,6 +29,7 @@ import java.util.Random;
 
 public class RadioBlock extends HorizontalDirectionalBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final BooleanProperty IS_PLAYING = BooleanProperty.create("is_playing");
 
     // Shapes for each direction so the hitbox is the right size
     public static final VoxelShape NORTH_AABB = Block.box(0, 0, 2.5, 16, 12, 13.5); // I don't think AABB is the right name for these, but thats how that idiot Loqor does it.
@@ -34,13 +37,11 @@ public class RadioBlock extends HorizontalDirectionalBlock {
     public static final VoxelShape SOUTH_AABB = Block.box(0, 0, 2.5, 16, 12, 13.5);
     public static final VoxelShape WEST_AABB = Block.box(2.5, 0, 0, 13.5, 12, 16);;
 
-    private boolean isPlaying;
-
     // Make sure the radio has the correct facings set in its blockstate
     // And also make sure its render_type is cutout
     public RadioBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(IS_PLAYING,false));
     }
 
     // Correctly sets the hitbox
@@ -61,6 +62,7 @@ public class RadioBlock extends HorizontalDirectionalBlock {
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
+        builder.add(IS_PLAYING);
     }
 
     public BlockState rotate(BlockState state, Rotation rotation) {
@@ -98,18 +100,25 @@ public class RadioBlock extends HorizontalDirectionalBlock {
         };
     }
 
+    // Storing this value in block states is easier than making packets as it makes sure that it is synced across server and client.
+    private static boolean isPlaying(BlockState state) {
+        return state.getValue(IS_PLAYING);
+    }
+    private static void setPlaying(Level level,BlockPos pos,BlockState state, boolean val) {
+        level.setBlockAndUpdate(pos,state.setValue(IS_PLAYING,val));
+    }
+
     // Code that is ran when you right-click the block
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-        // Example code - Plays a random song
-        if(this.isPlaying == false){
+        // Example code - Plays a random song which can be stopped
+        if(!isPlaying(state)){
             level.playSound(null, pos, getRandomDiscSound(), SoundSource.MUSIC, 1f,1f);
-            this.isPlaying = true;
         }
         else{
-            this.isPlaying = false;
             Minecraft.getInstance().getSoundManager().reload();
         }
+        setPlaying(level,pos,state,!isPlaying(state));
         return InteractionResult.SUCCESS;
     }
 }
