@@ -117,6 +117,7 @@ public class RadioBlock extends HorizontalDirectionalBlock {
         }
         else{
             Minecraft.getInstance().getSoundManager().reload(); // Reloading the entire sound manager is absolutely the worst way to do this but i cannot be bothered figuring out SoundInstances
+            // It also stops every sound from everything, e.g. stops sounds from other radios too
         }
         setPlaying(level,pos,state,!isPlaying(state));
         return InteractionResult.SUCCESS;
