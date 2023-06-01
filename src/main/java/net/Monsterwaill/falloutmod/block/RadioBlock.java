@@ -100,13 +100,6 @@ public class RadioBlock extends HorizontalDirectionalBlock {
         };
     }
 
-    @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState secondState, boolean p_60519_) {
-        Minecraft.getInstance().getSoundManager().reload(); // Reloading the entire sound manager is absolutely the worst way to do this but i cannot be bothered figuring out SoundInstances
-
-        super.onRemove(state, level, pos, secondState, p_60519_);
-    }
-
     // Storing this value in block states is easier than making packets as it makes sure that it is synced across server and client.
     private static boolean isPlaying(BlockState state) {
         return state.getValue(IS_PLAYING);
