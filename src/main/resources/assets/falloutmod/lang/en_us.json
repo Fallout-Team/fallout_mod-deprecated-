@@ -2,5 +2,6 @@
   "item.falloutmod.cap": "Bottle Cap",
   "item.falloutmod.holotape": "Holotape",
   "item.falloutmod.creativetab": "creativeTabIcon",
-  "itemGroup.fallouttab": "Fallout Mod"
+  "itemGroup.fallouttab": "Fallout Mod",
+  "block.falloutmod.radio": "Radiation King Radio"
 }

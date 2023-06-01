@@ -20,8 +20,9 @@ import org.slf4j.Logger;
 @Mod(FalloutMod.MOD_ID)
 public class FalloutMod {
     // Define mod id in a common place for everything to reference
-    public static final String MOD_ID = "falloutmod";
     private static final Logger LOGGER = LogUtils.getLogger();
+    public static final String MOD_ID = "falloutmod";
+
     public FalloutMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
