@@ -23,6 +23,7 @@
         }
     },
     "result": {
-        "block": "falloutmod:radio"
+        "block": "falloutmod:radio",
+        "count": 1
     }
 }
