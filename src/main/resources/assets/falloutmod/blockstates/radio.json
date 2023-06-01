@@ -13,7 +13,8 @@
       "y": 270
     },
     "facing=west": {
-      "model": "falloutmod:block/radio"
+      "model": "falloutmod:block/radio",
+      "y": 0
     }
   }
 }
