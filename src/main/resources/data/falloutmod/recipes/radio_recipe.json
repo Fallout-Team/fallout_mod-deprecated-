@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "iOi",
+        "ORO",
+        "SIS"
+    ],
+    "key": {
+        "i": {
+            "item": "minecraft:iron_ingot"
+        },
+        "O": {
+            "item": "minecraft:oak_planks"
+        },
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "S": {
+            "item": "minecraft:stone_button"
+        },
+        "I": {
+            "item": "minecraft:iron_block"
+        }
+    },
+    "result": {
+        "block": "falloutmod:radio"
+    }
+}
