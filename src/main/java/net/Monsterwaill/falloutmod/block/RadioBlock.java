@@ -2,6 +2,9 @@ package net.Monsterwaill.falloutmod.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -16,6 +19,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Random;
 
 public class RadioBlock extends HorizontalDirectionalBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -67,9 +72,35 @@ public class RadioBlock extends HorizontalDirectionalBlock {
         return RenderShape.MODEL;
     }
 
+    // Definitely a better way of doing this but im just doing it as an example so
+    private static SoundEvent getRandomDiscSound() {
+        Random random = new Random();
+        int choice = random.nextInt(1,12); // 12 for the 12 different discs
+
+        return switch (choice) {
+            case 1 -> SoundEvents.MUSIC_DISC_BLOCKS;
+            case 2 -> SoundEvents.MUSIC_DISC_CAT;
+            case 3 -> SoundEvents.MUSIC_DISC_CHIRP;
+            case 4 -> SoundEvents.MUSIC_DISC_FAR;
+            case 5 -> SoundEvents.MUSIC_DISC_MALL;
+            case 6 -> SoundEvents.MUSIC_DISC_MELLOHI;
+            case 7 -> SoundEvents.MUSIC_DISC_OTHERSIDE;
+            case 8 -> SoundEvents.MUSIC_DISC_PIGSTEP;
+            case 9 -> SoundEvents.MUSIC_DISC_STAL;
+            case 10 -> SoundEvents.MUSIC_DISC_STRAD;
+            case 11 -> SoundEvents.MUSIC_DISC_WAIT;
+            case 12 -> SoundEvents.MUSIC_DISC_WARD;
+            default -> SoundEvents.ANVIL_HIT;
+        };
+    }
+
     // Code that is ran when you right-click the block
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-        return InteractionResult.PASS;
+        // Example code - Plays a random song
+
+        level.playSound(null, pos, getRandomDiscSound(), SoundSource.MUSIC, 1f,1f);
+
+        return InteractionResult.SUCCESS;
     }
 }
