@@ -27,6 +27,7 @@ public class FalloutMod {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modItems.register(modEventBus);
+        modBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
