@@ -2,8 +2,7 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [128, 128],
 	"textures": {
-		"layer0": "falloutmod:block/radio",
-		"particle": "radio"
+		"layer0": "falloutmod:block/radio"
 	},
 	"elements": [
 		{
