@@ -20,8 +20,9 @@ public class FalloutBlocks {
 
 
 
-    public static final RegistryObject<Block> RADIO = register("radio", () -> new Block(BlockBehaviour.Properties.of(Material.METAL)));
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, FalloutMod.MOD_ID);
+    public static final RegistryObject<Block> RADIO = register("radio", () -> new Block(BlockBehaviour.Properties.of(Material.METAL)));
+
 
     /**
      * Registers a Block and BlockItem to the ItemGroup of your choice
@@ -47,10 +48,6 @@ public class FalloutBlocks {
         RegistryObject<T> registryObject = BLOCKS.register(id, blockSupplier);
         FalloutItems.ITEMS.register(id, () -> new BlockItem(registryObject.get(), new Item.Properties().tab(FalloutTabs.FALLOUT_TAB)));
         return registryObject;
-    }
-
-    public static void register(IEventBus eventBus) {
-        BLOCKS.register(eventBus);
     }
 
 }

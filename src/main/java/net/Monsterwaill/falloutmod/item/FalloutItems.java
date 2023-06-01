@@ -16,8 +16,4 @@ public class FalloutItems {
             () -> new Item(new Item.Properties().tab(FalloutTabs.FALLOUT_TAB).stacksTo(1)));
     public static final RegistryObject<Item> CREATIVETAB = ITEMS.register("creativetab",
             () -> new NotHoldableItem(new Item.Properties()));
-
-    public static void register(IEventBus eventBus){
-        ITEMS.register(eventBus );
-    }
 }
