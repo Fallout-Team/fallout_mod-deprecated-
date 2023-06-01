@@ -21,7 +21,7 @@ public class FalloutBlocks {
 
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, FalloutMod.MOD_ID);
-    public static final RegistryObject<Block> RADIO = register("radio", () -> new Block(BlockBehaviour.Properties.of(Material.METAL)));
+    public static final RegistryObject<Block> RADIO = register("radio", () -> new RadioBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion()));
 
 
     /**
@@ -35,7 +35,7 @@ public class FalloutBlocks {
 
     /**
      * Registers a Block without a BlockItem
-     * <br> Use when you need a special BlockItem. The BlockItem should be registered in RItems with the same registry name as the block
+     * <br> Use when you need a special BlockItem. The BlockItem should be registered in FalloutItems with the same registry name as the block
      */
     private static <T extends Block> RegistryObject<T> registerBlockOnly(String id, Supplier<T> blockSupplier) {
         return BLOCKS.register(id, blockSupplier);

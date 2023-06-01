@@ -4,6 +4,8 @@ package net.Monsterwaill.falloutmod;
 import com.mojang.logging.LogUtils;
 import net.Monsterwaill.falloutmod.block.FalloutBlocks;
 import net.Monsterwaill.falloutmod.item.FalloutItems;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -37,9 +39,7 @@ public class FalloutMod {
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-        // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
-        LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+
     }
 
 
@@ -49,6 +49,7 @@ public class FalloutMod {
     {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+
         }
     }
 }

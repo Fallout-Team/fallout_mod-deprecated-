@@ -2,9 +2,10 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [128, 128],
 	"textures": {
-		"layer0": "falloutmod:block/radio",
-		"particle": "radio"
+		"3": "falloutmod:block/radio",
+		"particle": "falloutmod:block/radio"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"from": [1.5, 2.5, 11.5],
@@ -55,8 +56,8 @@
 			}
 		},
 		{
-			"from": [13.5, 5, 0],
-			"to": [13.5, 22, 16],
+			"from": [13.75, 5, 0],
+			"to": [13.75, 22, 16],
 			"faces": {
 				"north": {"uv": [2, 5.625, 2, 7.75], "texture": "#3"},
 				"east": {"uv": [0, 5.625, 2, 7.75], "texture": "#3"},
