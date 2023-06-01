@@ -1,6 +1,8 @@
 package net.Monsterwaill.falloutmod.block;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.client.sounds.SoundManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -113,6 +115,7 @@ public class RadioBlock extends HorizontalDirectionalBlock {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         // Example code - Plays a random song which can be stopped
         if(!isPlaying(state)){
+            // @TODO use SimpleSoundInstance or extend something like it for better coedfingh
             level.playSound(null, pos, getRandomDiscSound(), SoundSource.MUSIC, 1f,1f);
         }
         else{
