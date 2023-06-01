@@ -116,7 +116,7 @@ public class RadioBlock extends HorizontalDirectionalBlock {
             level.playSound(null, pos, getRandomDiscSound(), SoundSource.MUSIC, 1f,1f);
         }
         else{
-            Minecraft.getInstance().getSoundManager().reload();
+            Minecraft.getInstance().getSoundManager().reload(); // Reloading the entire sound manager is absolutely the worst way to do this but i cannot be bothered figuring out SoundInstances
         }
         setPlaying(level,pos,state,!isPlaying(state));
         return InteractionResult.SUCCESS;
