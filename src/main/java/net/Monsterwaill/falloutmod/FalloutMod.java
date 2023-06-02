@@ -3,12 +3,21 @@ package net.Monsterwaill.falloutmod;
 
 import com.mojang.logging.LogUtils;
 import net.Monsterwaill.falloutmod.block.FalloutBlocks;
+import net.Monsterwaill.falloutmod.block.TARDISBlock;
+import net.Monsterwaill.falloutmod.block.entities.FalloutBlockEntities;
+import net.Monsterwaill.falloutmod.block.entities.TARDISBlockEntity;
 import net.Monsterwaill.falloutmod.item.FalloutItems;
+import net.Monsterwaill.falloutmod.models.TARDISModel;
+import net.Monsterwaill.falloutmod.network.Network;
+import net.Monsterwaill.falloutmod.renderers.TARDISRenderer;
+import net.Monsterwaill.falloutmod.sounds.FalloutSounds;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -31,6 +40,8 @@ public class FalloutMod {
 
         FalloutItems.ITEMS.register(modEventBus);
         FalloutBlocks.BLOCKS.register(modEventBus);
+        FalloutBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        FalloutSounds.SOUNDS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -39,7 +50,7 @@ public class FalloutMod {
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
+        Network.register();
     }
 
 
@@ -50,6 +61,32 @@ public class FalloutMod {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
 
+        }
+
+        @SubscribeEvent
+        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers renderers) {
+            renderers.registerBlockEntityRenderer(FalloutBlockEntities.TARDIS_BLOCK_ENTITY.get(), TARDISRenderer::new);
+        }
+
+        @SubscribeEvent
+        public static void registerLayerDefinition(EntityRenderersEvent.RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(TARDISModel.LAYER_LOCATION,TARDISModel::createBodyLayer);
+        }
+    }
+    @Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID)
+    public static class CommonEvents {
+
+        @Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+        public static class ModEventBusEvents {
+
+        }
+
+        @SubscribeEvent
+        public void onBlockPlace(BlockEvent.EntityPlaceEvent event) {
+            if (event.getState().getBlock() instanceof TARDISBlock) {
+                TARDISBlockEntity blockEntity = (TARDISBlockEntity) event.getLevel().getBlockEntity(event.getPos());
+                blockEntity.getAnimation().setupAnimation();
+            }
         }
     }
 }

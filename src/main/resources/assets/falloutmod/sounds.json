@@ -1,0 +1,10 @@
+{
+  "dematerialise": {
+    "subtitle": "falloutmod.tardis.dematerialise",
+    "sounds": [
+      {
+        "name": "falloutmod:dematerialise"
+      }
+    ]
+  }
+}
