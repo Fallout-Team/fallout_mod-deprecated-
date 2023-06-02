@@ -1,9 +1,8 @@
 package net.Monsterwaill.falloutmod.item;
 
 import net.Monsterwaill.falloutmod.FalloutMod;
-import net.Monsterwaill.falloutmod.item.custom.PIPBOY;
+import net.Monsterwaill.falloutmod.item.custom.PipBoy;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -17,6 +16,6 @@ public class FalloutItems {
             () -> new Item(new Item.Properties().tab(FalloutTabs.FALLOUT_TAB).stacksTo(1)));
     public static final RegistryObject<Item> CREATIVETAB = ITEMS.register("creativetab",
             () -> new NotHoldableItem(new Item.Properties()));
-    public static final RegistryObject<Item> PIPBOY = ITEMS.register("pipboy",
-            () -> new PIPBOY(new Item.Properties().tab(FalloutTabs.FALLOUT_TAB).stacksTo(1).setNoRepair().fireResistant()));
+    public static final RegistryObject<Item> PIPBOY = ITEMS.register("pip_boy",
+            () -> new PipBoy(new Item.Properties().tab(FalloutTabs.FALLOUT_TAB).stacksTo(1).setNoRepair().fireResistant()));
 }

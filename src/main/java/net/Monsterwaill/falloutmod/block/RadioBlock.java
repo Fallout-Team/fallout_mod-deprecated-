@@ -116,7 +116,7 @@ public class RadioBlock extends HorizontalDirectionalBlock {
         // Example code - Plays a random song which can be stopped
         if(!isPlaying(state)){
             // @TODO use SimpleSoundInstance or extend something like it for better coedfingh
-            level.playSound(null, pos, getRandomDiscSound(), SoundSource.MUSIC, 1f,1f);
+            level.playSound(null, pos, getRandomDiscSound(), SoundSource.RECORDS, 1f,1f);
         }
         else{
             Minecraft.getInstance().getSoundManager().reload(); // Reloading the entire sound manager is absolutely the worst way to do this but i cannot be bothered figuring out SoundInstances

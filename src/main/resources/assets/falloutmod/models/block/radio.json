@@ -4,7 +4,6 @@
 	"texture_size": [128, 128],
 	"textures": {
 		"1": "falloutmod:block/radio",
-		"render_type": "cutout",
 		"particle": "falloutmod:block/radio"
 	},
 	"elements": [

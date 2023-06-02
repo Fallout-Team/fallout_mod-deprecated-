@@ -9,8 +9,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class PIPBOY extends Item {
-    public PIPBOY(Properties properties) {
+public class PipBoy extends Item {
+
+    public PipBoy(Properties properties) {
         super(properties);
     }
 
@@ -23,12 +24,12 @@ public class PIPBOY extends Item {
             player.getCooldowns().addCooldown(this, 50);
         }
 
-
         return super.use(level, player, hand);
     }
     private void showRandomNumber(Player player) {
         player.sendSystemMessage(Component.literal("Number:" + getRandomNumber()));
     }
+
     private int getRandomNumber() {
         return RandomSource.createNewThreadLocalInstance().nextIntBetweenInclusive(1, 11);
     }

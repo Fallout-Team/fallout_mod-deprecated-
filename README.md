@@ -1,17 +1,19 @@
-# fallout_mod
+# Fallout Mod
 Fallout™ and its contents are created and owned by Bethesda™.
 Under the CC BY-SA 4.0 License.
 
 Credits:
     
-    Developers:
+    Development:
         Duzo
         Suff99
+        Loqor
         Monsterwaill
     
-    Modellers:
-        L0A Link
+    Asset Creation:
+        L0A Ink
         Magic Man(?)
+        Loqor
     
     Builders:
-        Classic_account
+        classic_account

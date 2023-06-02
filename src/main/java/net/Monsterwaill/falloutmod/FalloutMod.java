@@ -11,9 +11,6 @@ import net.Monsterwaill.falloutmod.models.TARDISModel;
 import net.Monsterwaill.falloutmod.network.Network;
 import net.Monsterwaill.falloutmod.renderers.TARDISRenderer;
 import net.Monsterwaill.falloutmod.sounds.FalloutSounds;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,7 +28,6 @@ import org.slf4j.Logger;
 @Mod(FalloutMod.MOD_ID)
 public class FalloutMod {
     // Define mod id in a common place for everything to reference
-    private static final Logger LOGGER = LogUtils.getLogger();
     public static final String MOD_ID = "falloutmod";
 
     public FalloutMod()

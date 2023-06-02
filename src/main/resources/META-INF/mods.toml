@@ -29,9 +29,9 @@ displayName="Fallout Mod" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="examplemod.png" #optional
 # A text field displayed in the mod UI
-credits="Developers: Monsterwaill, Duzo & Suff99.  Modellers: L0A Link & Magic man(?).  Builders: Classic_account." #optional
+credits="Developers: Monsterwaill, Duzo, Suff99, & Loqor  \nAsset Creation: L0A Ink, Magic Man(?) & Loqor  \nBuilders: classic_account" #optional
 # A text field displayed in the mod UI
-authors="Monsterwaill & L0A Link" #optional
+authors="Monsterwaill & L0A Ink" #optional
 # Display Test controls the display for your mod in the server connection screen
 # MATCH_VERSION means that your mod will cause a red X if the versions on client and server differ. This is the default behaviour and should be what you choose if you have server and client elements to your mod.
 # IGNORE_SERVER_VERSION means that your mod will not cause a red X if it's present on the server but not on the client. This is what you should use if you're a server only mod.
@@ -42,11 +42,10 @@ authors="Monsterwaill & L0A Link" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-This mod adds your favorite items from fallout to minecraft!
+This mod adds your favorite items from the Fallout universe to Minecraft!
 
-Thank you for downloading this mod! This is my first mod I have created so please don't be enraged that there are bugs, that will be solved with time and experience!
-I hope you enjoy!
-Make sure to join the discord for any support/sneak peaks for new updates!
+Thank you for downloading this mod! This is my [Monsterwaill's] first mod I have created so please understand that there will be bugs, and those will be fixed in time.
+Make sure to join the Discord for any support/sneak peeks for new updates!
 Discord: https://discord.gg/bAkSHmzVz3
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
