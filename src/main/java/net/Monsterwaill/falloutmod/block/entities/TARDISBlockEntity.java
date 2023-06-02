@@ -32,8 +32,10 @@ public class TARDISBlockEntity extends BlockEntity {
             return;
         }
 
-        level.playSound(null,pos, FalloutSounds.DEMATERIALISE.get(), SoundSource.AMBIENT,1f,1f);
-        this.getAnimation().start();
+        if (!this.getAnimation().isStarted()) {
+            level.playSound(null, pos, FalloutSounds.DEMATERIALISE.get(), SoundSource.AMBIENT, 1f, 1f);
+            this.getAnimation().start();
+        }
     }
 
     public float getAlpha() {
