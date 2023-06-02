@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -20,8 +21,8 @@ public class FalloutBlocks {
 
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, FalloutMod.MOD_ID);
-    public static final RegistryObject<Block> RADIO = register("radio", () -> new RadioBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion().strength(4).requiresCorrectToolForDrops()));
-
+    public static final RegistryObject<Block> RADIO = register("radio", () -> new RadioBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion()));
+    public static final RegistryObject<TARDISBlock> TARDIS_BLOCK = registerBlockOnly("tardis", () -> new TARDISBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion()));
 
     /**
      * Registers a Block and BlockItem to the ItemGroup of your choice
