@@ -150,4 +150,13 @@ public class RadioBlock extends BaseEntityBlock {
 
         return InteractionResult.SUCCESS;
     }
+
+    @Override
+    public void onRemove(BlockState p_60515_, Level level, BlockPos pos, BlockState p_60518_, boolean p_60519_) {
+
+        RadioBlockEntity radio = (RadioBlockEntity) level.getBlockEntity(pos);
+        radio.stopSound();
+
+        super.onRemove(p_60515_, level, pos, p_60518_, p_60519_);
+    }
 }
