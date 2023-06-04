@@ -7,8 +7,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -22,6 +25,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -118,7 +122,14 @@ public class RadioBlock extends BaseEntityBlock {
         level.setBlockAndUpdate(pos,state.setValue(IS_PLAYING,val));
     }
 
-
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (isPlaying(state)) {
+            Vec3 vec3 = Vec3.atBottomCenterOf(pos).add(0.0D, (double) 1.2F, 0.0D);
+            float f = random.nextInt(4) / 24.0F;
+            level.addParticle(ParticleTypes.NOTE, vec3.x(), vec3.y(), vec3.z(), 0D, (double) f, 0.0D); // @TODO too many of these particels + they're all GREEN
+        }
+    }
 
     // Code that is ran when you right-click the block
     @Override

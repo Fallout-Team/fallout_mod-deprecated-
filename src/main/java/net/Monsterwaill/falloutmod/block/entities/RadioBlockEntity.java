@@ -20,7 +20,7 @@ import static net.Monsterwaill.falloutmod.block.RadioBlock.*;
 
 public class RadioBlockEntity extends BlockEntity {
     // This is just the TARDIS from my mod but with just the animation bits lol
-    private SimpleSoundInstance sound;
+    private SimpleSoundInstance sound; // Doesn't need to be saved because sounds arent saved so dont save it LOQOR
     public RadioBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
