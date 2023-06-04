@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -26,15 +27,16 @@ public class TARDISBlockEntity extends BlockEntity {
         this(FalloutBlockEntities.TARDIS_BLOCK_ENTITY.get(), pos, state);
     }
 
-    public void use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (level.isClientSide || hand != InteractionHand.MAIN_HAND) {
-            return;
+            return InteractionResult.SUCCESS;
         }
 
         if (!this.getAnimation().isStarted()) {
             level.playSound(null, pos, FalloutSounds.DEMATERIALISE.get(), SoundSource.AMBIENT, 1f, 1f);
             this.getAnimation().start();
         }
+        return InteractionResult.SUCCESS;
     }
 
     public float getAlpha() {

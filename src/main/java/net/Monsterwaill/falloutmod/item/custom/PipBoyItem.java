@@ -41,7 +41,7 @@ public class PipBoyItem extends Item {
         return super.use(level, player, hand);
     }
     private void messageRandomNumber(Player player) {
-        player.sendSystemMessage(Component.translatable(FalloutConstants.NUMBER, getRandomNumber()));
+        player.sendSystemMessage(Component.translatable(FalloutConstants.NUMBER).append(" " + getRandomNumber()));
     }
 
     private int getRandomNumber() {

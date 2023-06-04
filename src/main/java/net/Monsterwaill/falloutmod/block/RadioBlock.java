@@ -1,5 +1,8 @@
 package net.Monsterwaill.falloutmod.block;
 
+import net.Monsterwaill.falloutmod.block.entities.FalloutBlockEntities;
+import net.Monsterwaill.falloutmod.block.entities.RadioBlockEntity;
+import net.Monsterwaill.falloutmod.block.entities.TARDISBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.core.BlockPos;
@@ -13,6 +16,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -21,10 +25,11 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class RadioBlock extends HorizontalDirectionalBlock {
+public class RadioBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty IS_PLAYING = BooleanProperty.create("is_playing");
     private SimpleSoundInstance soundInstance;
@@ -41,6 +46,13 @@ public class RadioBlock extends HorizontalDirectionalBlock {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(IS_PLAYING,false));
     }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return FalloutBlockEntities.RADIO_BLOCK_ENTITY.get().create(pos, state);
+    }
+
 
     // Correctly sets the hitbox
     @Override
@@ -77,7 +89,7 @@ public class RadioBlock extends HorizontalDirectionalBlock {
     }
 
     // Definitely a better way of doing this but im just doing it as an example so
-    private SoundEvent getRandomDiscSound() {
+    public static SoundEvent getRandomDiscSound() {
         Random random = new Random();
         int choice = random.nextInt(1,12); // 12 for the 12 different discs
 
@@ -98,10 +110,6 @@ public class RadioBlock extends HorizontalDirectionalBlock {
         };
     }
 
-    private SimpleSoundInstance getSoundInstance(BlockPos pos) {
-        return this.soundInstance = SimpleSoundInstance.forRecord(getRandomDiscSound(), pos.getX(), pos.getY(), pos.getZ());
-    }
-
     // Storing this value in block states is easier than making packets as it makes sure that it is synced across server and client.
     private static boolean isPlaying(BlockState state) {
         return state.getValue(IS_PLAYING);
@@ -110,24 +118,25 @@ public class RadioBlock extends HorizontalDirectionalBlock {
         level.setBlockAndUpdate(pos,state.setValue(IS_PLAYING,val));
     }
 
+
+
     // Code that is ran when you right-click the block
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         // Example code - Plays a random song which can be stopped
         if(level.isClientSide) {return InteractionResult.SUCCESS;}
+
+        RadioBlockEntity radio = (RadioBlockEntity) level.getBlockEntity(pos);
+
         if(!isPlaying(state)) {
-            // @TODO use SimpleSoundInstance or extend something like it for better coedfingh
-            //level.playSound(null, pos, getRandomDiscSound(), SoundSource.RECORDS, 1f,1f);
-            Minecraft.getInstance().getSoundManager().play(this.getSoundInstance(pos));
-            System.out.println(this.soundInstance);
+            // I dont evne know what kind of crack loqor was smoking
+            radio.playRandomDisc(pos);
         }
         else{
-            Minecraft.getInstance().getSoundManager().stop(this.soundInstance);
-            System.out.println(this.soundInstance);
-            // haha, I fixed it because I can actually code sometimes :) || Reloading the entire sound manager is absolutely the worst way to do this but i cannot be bothered figuring out SoundInstances
-            // It also stops every sound from everything, e.g. stops sounds from other radios too
+            radio.stopSound();
         }
         setPlaying(level,pos,state,!isPlaying(state));
+
         return InteractionResult.SUCCESS;
     }
 }
