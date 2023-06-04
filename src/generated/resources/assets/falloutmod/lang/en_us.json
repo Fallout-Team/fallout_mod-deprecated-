@@ -1,0 +1,12 @@
+{
+  "block.falloutmod.radio": "Radiation King Radio",
+  "block.falloutmod.tardis": "TARDIS",
+  "item.falloutmod.cap": "Bottle Cap",
+  "item.falloutmod.creativetab": "Creative Tab",
+  "item.falloutmod.holotape": "Holotape",
+  "item.falloutmod.pip_boy": "Pip-Boy 2500",
+  "itemGroup.fallouttab": "Fallout Mod",
+  "message.falloutmod.item_shift": "§2Press Shift",
+  "message.falloutmod.number": "Number",
+  "message.falloutmod.pipboy_usage": "§2The Pip-Boy 2500 is only operational when held in the offhand slot. For more info please refer to your Pip-Boy manual provided by vault tech."
+}

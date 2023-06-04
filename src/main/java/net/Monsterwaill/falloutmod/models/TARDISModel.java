@@ -1,7 +1,4 @@
-package net.Monsterwaill.falloutmod.models;// Made with Blockbench 4.7.4
-// Exported for Minecraft version 1.17 or later with Mojang mappings
-// Paste this class into your mod and generate all required imports
-
+package net.Monsterwaill.falloutmod.models;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -15,7 +12,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
 public class TARDISModel<T extends Entity> extends EntityModel<T> {
-	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(FalloutMod.MOD_ID, "tardis_exterior"), "main");
 	public static final ResourceLocation TEXTURE = new ResourceLocation(FalloutMod.MOD_ID, "textures/block/tardis.png");
 	private final ModelPart box;

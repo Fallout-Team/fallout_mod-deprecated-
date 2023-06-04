@@ -1,8 +1,8 @@
 package net.Monsterwaill.falloutmod.animation;
 
-import net.Monsterwaill.falloutmod.block.entities.TARDISBlockEntity;
 import net.Monsterwaill.falloutmod.network.Network;
 import net.Monsterwaill.falloutmod.network.packets.UpdateExteriorAnimationS2CPacket;
+import net.Monsterwaill.falloutmod.block.entities.TARDISBlockEntity;
 import net.minecraft.util.Mth;
 
 public abstract class ExteriorAnimation {

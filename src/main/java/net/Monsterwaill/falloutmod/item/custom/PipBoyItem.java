@@ -1,6 +1,6 @@
 package net.Monsterwaill.falloutmod.item.custom;
 
-import net.minecraft.ChatFormatting;
+import net.Monsterwaill.falloutmod.data.FalloutConstants;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
@@ -15,36 +15,33 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class PipBoy extends Item {
+public class PipBoyItem extends Item {
 
-    public PipBoy(Properties properties) {
+    public PipBoyItem(Properties properties) {
         super(properties);
     }
 
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
         if(Screen.hasShiftDown()) {
-            components.add(Component.literal("The Pip-Boy 2500 is only operational when held in the offhand slot. For more info please refer to your Pip-Boy manual provided by vault tech.").withStyle(ChatFormatting.GREEN));
+            components.add(Component.translatable(FalloutConstants.PIPBOY_USAGE));
         } else {
-            components.add(Component.literal("Press shift").withStyle(ChatFormatting.DARK_GREEN));
+            components.add(Component.translatable(FalloutConstants.ITEM_SHIFT));
         }
-
         super.appendHoverText(itemStack, level, components, tooltipFlag);
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if(!level.isClientSide() && hand == InteractionHand.OFF_HAND) {
-            //testing to see if this works by making it say a number
-            // the number should say itself in chat ig
-            showRandomNumber(player);
+            messageRandomNumber(player);
             player.getCooldowns().addCooldown(this, 50);
         }
 
         return super.use(level, player, hand);
     }
-    private void showRandomNumber(Player player) {
-        player.sendSystemMessage(Component.literal("Number:" + getRandomNumber()));
+    private void messageRandomNumber(Player player) {
+        player.sendSystemMessage(Component.translatable(FalloutConstants.NUMBER, getRandomNumber()));
     }
 
     private int getRandomNumber() {

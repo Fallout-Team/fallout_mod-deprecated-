@@ -15,7 +15,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import org.slf4j.Logger;
 
 public class TARDISBlockEntity extends BlockEntity {
     // This is just the TARDIS from my mod but with just the animation bits lol
