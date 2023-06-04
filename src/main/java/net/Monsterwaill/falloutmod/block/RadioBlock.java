@@ -1,5 +1,6 @@
 package net.Monsterwaill.falloutmod.block;
 
+import net.Monsterwaill.falloutmod.FalloutMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;
@@ -11,6 +12,7 @@ import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -32,6 +34,7 @@ import java.util.Random;
 public class RadioBlock extends HorizontalDirectionalBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty IS_PLAYING = BooleanProperty.create("is_playing");
+    private SimpleSoundInstance soundInstance;
 
     // Shapes for each direction so the hitbox is the right size
     public static final VoxelShape NORTH_AABB = Block.box(0, 0, 2.5, 16, 12, 13.5); // I don't think AABB is the right name for these, but thats how that idiot Loqor does it.
@@ -81,7 +84,7 @@ public class RadioBlock extends HorizontalDirectionalBlock {
     }
 
     // Definitely a better way of doing this but im just doing it as an example so
-    private static SoundEvent getRandomDiscSound() {
+    private SoundEvent getRandomDiscSound() {
         Random random = new Random();
         int choice = random.nextInt(1,12); // 12 for the 12 different discs
 
@@ -102,6 +105,10 @@ public class RadioBlock extends HorizontalDirectionalBlock {
         };
     }
 
+    private SimpleSoundInstance getSoundInstance(BlockPos pos) {
+        return this.soundInstance = SimpleSoundInstance.forRecord(getRandomDiscSound(), pos.getX(), pos.getY(), pos.getZ());
+    }
+
     // Storing this value in block states is easier than making packets as it makes sure that it is synced across server and client.
     private static boolean isPlaying(BlockState state) {
         return state.getValue(IS_PLAYING);
@@ -114,12 +121,17 @@ public class RadioBlock extends HorizontalDirectionalBlock {
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         // Example code - Plays a random song which can be stopped
-        if(!isPlaying(state)){
+        if(level.isClientSide) {return InteractionResult.SUCCESS;}
+        if(!isPlaying(state)) {
             // @TODO use SimpleSoundInstance or extend something like it for better coedfingh
-            level.playSound(null, pos, getRandomDiscSound(), SoundSource.RECORDS, 1f,1f);
+            //level.playSound(null, pos, getRandomDiscSound(), SoundSource.RECORDS, 1f,1f);
+            Minecraft.getInstance().getSoundManager().play(this.getSoundInstance(pos));
+            System.out.println(this.soundInstance);
         }
         else{
-            Minecraft.getInstance().getSoundManager().reload(); // Reloading the entire sound manager is absolutely the worst way to do this but i cannot be bothered figuring out SoundInstances
+            Minecraft.getInstance().getSoundManager().stop(this.soundInstance);
+            System.out.println(this.soundInstance);
+            // haha, I fixed it because I can actually code sometimes :) || Reloading the entire sound manager is absolutely the worst way to do this but i cannot be bothered figuring out SoundInstances
             // It also stops every sound from everything, e.g. stops sounds from other radios too
         }
         setPlaying(level,pos,state,!isPlaying(state));

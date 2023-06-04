@@ -24,9 +24,9 @@ public class PipBoy extends Item {
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
         if(Screen.hasShiftDown()) {
-            components.add(Component.literal("The Pip-Boy 2000 Mk VI is only operational when held in the offhand slot. For more info please refer to your Pip-Boy manual provided by vault tech.").withStyle(ChatFormatting.GREEN));
+            components.add(Component.literal("The Pip-Boy 2500 is only operational when held in the offhand slot. For more info please refer to your Pip-Boy manual provided by vault tech.").withStyle(ChatFormatting.GREEN));
         } else {
-            components.add(Component.literal("Press shift!").withStyle(ChatFormatting.DARK_RED));
+            components.add(Component.literal("Press shift").withStyle(ChatFormatting.DARK_GREEN));
         }
 
         super.appendHoverText(itemStack, level, components, tooltipFlag);
