@@ -5,5 +5,6 @@ public enum EnumPipColor {
     AMBER,
     RED,
     ICE_BLUE,
-    INDIGO
+    INDIGO,
+    WHITE
 }

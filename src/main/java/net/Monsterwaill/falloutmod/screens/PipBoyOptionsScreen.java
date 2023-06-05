@@ -3,6 +3,7 @@ package net.Monsterwaill.falloutmod.screens;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.Monsterwaill.falloutmod.FalloutMod;
+import net.Monsterwaill.falloutmod.events.ClientModEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.Button;
@@ -17,7 +18,6 @@ public class PipBoyOptionsScreen extends PipBoyScreen {
     //Green set
     private static final ResourceLocation OPTIONS = new ResourceLocation(FalloutMod.MOD_ID,"textures/gui/pipboy_options.png");
 
-    private EnumPipColor getPipColor = EnumPipColor.GREEN;
     private int textColor;
     protected int imageWidth = 256;
     protected int imageHeight = 131;
@@ -25,12 +25,14 @@ public class PipBoyOptionsScreen extends PipBoyScreen {
     private Button settings, quit;
     private final Screen oldScreen;
     private Player player;
+    private Component component;
 
-    public PipBoyOptionsScreen(Component component, Player player, Screen currentScreen) {
+    public PipBoyOptionsScreen(Component component, Player player, Screen currentScreen, EnumPipColor color) {
         super(component, player);
         this.player = player;
         this.oldScreen = currentScreen;
-        if(this.getPipColor == EnumPipColor.GREEN) {
+        this.component = component;
+        if(getGetPipColor() == EnumPipColor.GREEN) {
             this.textColor = 0x4CFF00;
             this.texture = OPTIONS;
         }
@@ -69,8 +71,7 @@ public class PipBoyOptionsScreen extends PipBoyScreen {
     }
 
     public void toSettings(Screen currentScreen) {
-        Screen nextScreen = new PipBoySettingsScreen(Component.translatable("Settings"), this.player, currentScreen);
-        this.minecraft.getInstance().setScreen(nextScreen);
+        this.minecraft.getInstance().setScreen(ClientModEvents.createSettingsScreen(this.component, this.player, currentScreen));
     }
 
     @Override

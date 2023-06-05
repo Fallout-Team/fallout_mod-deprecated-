@@ -69,7 +69,6 @@ public class UpdatePipColorC2SPacket {
                 Player player = level.getPlayerByUUID(this.playerUUID);
 
                 if (player.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof PipBoyItem pipBoyItem) {
-
                     pipBoyItem.setPipColorName(this.color);
                 }
             });

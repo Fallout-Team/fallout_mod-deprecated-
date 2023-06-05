@@ -64,7 +64,7 @@ public class PipBoyScreen extends Screen {
 
         //Screens
         this.stats = new Button((i) + (this.imageWidth/2) + -85,l + 10,25,10, Component.nullToEmpty("[[]]"), (p_96786_) -> {
-            this.toStats(this);
+            this.toStats(this, this.getGetPipColor());
         });
         this.radio = new Button((i) + (this.imageWidth/2) + 57,l + 10,25,10, Component.nullToEmpty("[[]]"), (p_96786_) -> {
             this.toRadio(this);
@@ -74,7 +74,7 @@ public class PipBoyScreen extends Screen {
         });
 
         //Top buttons
-        this.options = new Button((i) + (this.imageWidth/2) + -112,l + 10,10,10, Component.nullToEmpty("[]"), (p_96786_) -> {
+        this.options = new Button((i) + (this.imageWidth/2) + -113,l + 10,10,10, Component.nullToEmpty("[]"), (p_96786_) -> {
             this.toOptions(this);
         });
         this.capture = new Button((i) + (this.imageWidth/2) + 100,l + 10,10,10, Component.nullToEmpty("[]"), (p_96786_) -> {
@@ -95,8 +95,8 @@ public class PipBoyScreen extends Screen {
     }
 
     //@TODO: condense into one method - Loqor
-    public void toStats(Screen currentScreen) {
-        Screen nextScreen = new PipBoyStatsScreen(Component.translatable("Stats"), this.player, currentScreen, this.getGetPipColor());
+    public void toStats(Screen currentScreen, EnumPipColor color) {
+        Screen nextScreen = new PipBoyStatsScreen(Component.translatable("Stats"), this.player, currentScreen, color);
         this.minecraft.getInstance().setScreen(nextScreen);
     }
 
@@ -131,6 +131,8 @@ public class PipBoyScreen extends Screen {
             case ICE_BLUE:
                 return EnumPipColor.INDIGO;
             case INDIGO:
+                return EnumPipColor.WHITE;
+            case WHITE:
                 return EnumPipColor.GREEN;
             default:
                 return EnumPipColor.GREEN;
@@ -145,7 +147,7 @@ public class PipBoyScreen extends Screen {
     }
 
     public void toOptions(Screen currentScreen) {
-        Screen nextScreen = new PipBoyOptionsScreen(Component.translatable("Options"), this.player, currentScreen);
+        Screen nextScreen = new PipBoyOptionsScreen(Component.translatable("Options"), this.player, currentScreen,this.getPipColor);
         this.minecraft.getInstance().setScreen(nextScreen);
     }
 

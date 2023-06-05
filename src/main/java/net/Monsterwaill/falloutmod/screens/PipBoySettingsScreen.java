@@ -16,12 +16,11 @@ public class PipBoySettingsScreen extends PipBoyScreen {
     //Green set
     private static final ResourceLocation OPTIONS = new ResourceLocation(FalloutMod.MOD_ID,"textures/gui/pipboy_options.png");
 
-    private EnumPipColor getPipColor = EnumPipColor.GREEN;
     private int textColor;
     protected int imageWidth = 256;
     protected int imageHeight = 131;
     private ResourceLocation texture;
-    private Button pipBoyColor, quit;
+    private Button pipBoyColoring, quit;
     private final Screen oldScreen;
     private Player player;
 
@@ -29,7 +28,7 @@ public class PipBoySettingsScreen extends PipBoyScreen {
         super(component, player);
         this.player = player;
         this.oldScreen = currentScreen;
-        if(this.getPipColor == EnumPipColor.GREEN) {
+        if(getGetPipColor() == EnumPipColor.GREEN) {
             this.textColor = 0x4CFF00;
             this.texture = OPTIONS;
         }
@@ -46,7 +45,7 @@ public class PipBoySettingsScreen extends PipBoyScreen {
         int i = (this.width - this.imageWidth) / 2;
         assert this.minecraft != null;
 
-        this.pipBoyColor = new Button((i) + 80, (l) + 23,130,10, Component.nullToEmpty("[]"), (p_96786_) -> {
+        this.pipBoyColoring = new Button((i) + 80, (l) + 23,130,10, Component.nullToEmpty("[]"), (p_96786_) -> {
             changePipBoyColor();
         });
         this.quit = new Button((i) + 20, (l) + 55,50,10, Component.nullToEmpty("[]"), (p_96786_) -> {
@@ -54,7 +53,7 @@ public class PipBoySettingsScreen extends PipBoyScreen {
         });
 
         //Adding widgets: If you need to see the widget, add "Renderable" in front of Widget to get "this.addRenderableWidget()"
-        this.addWidget(this.pipBoyColor);
+        this.addWidget(this.pipBoyColoring);
         this.addWidget(this.quit);
     }
 
@@ -86,7 +85,7 @@ public class PipBoySettingsScreen extends PipBoyScreen {
         this.font.draw(pPoseStack,"██████", (i)+20, (l) + 45, 0x1A5900);
         this.font.draw(pPoseStack,"SETTINGS", (i) + 20, (l) + 45,this.textColor);
         this.font.draw(pPoseStack,"RETURN", (i) + 20, (l) + 55,this.textColor);
-        String __colorNames = this.getGetPipColor().toString();
+        String __colorNames = getGetPipColor().toString();
         String pipColorNames = __colorNames.replaceAll("_", " ");
         this.font.draw(pPoseStack,"Pip-Boy Colouring: " + pipColorNames, (i) + 80, (l) + 25,this.textColor);
         pPoseStack.popPose();

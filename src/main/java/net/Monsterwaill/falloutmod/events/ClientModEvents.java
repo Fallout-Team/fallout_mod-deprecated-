@@ -7,9 +7,11 @@ import net.Monsterwaill.falloutmod.entities.FalloutEntities;
 import net.Monsterwaill.falloutmod.item.custom.PipBoyItem;
 import net.Monsterwaill.falloutmod.models.PowerArmor;
 import net.Monsterwaill.falloutmod.models.TARDISModel;
+import net.Monsterwaill.falloutmod.network.Network;
 import net.Monsterwaill.falloutmod.renderers.TARDISRenderer;
 import net.Monsterwaill.falloutmod.renderers.entity.PowerArmorRenderer;
 import net.Monsterwaill.falloutmod.screens.EnumPipColor;
+import net.Monsterwaill.falloutmod.screens.PipBoySettingsScreen;
 import net.Monsterwaill.falloutmod.screens.PipBoyStatsScreen;
 import net.Monsterwaill.falloutmod.util.Keybinding;
 import net.minecraft.client.Minecraft;
@@ -51,6 +53,10 @@ public class ClientModEvents
 
     public static Screen createPipBoyScreen(Component component, Player player, EnumPipColor pipColor) {
         return new PipBoyStatsScreen(component, player, null, pipColor);
+    }
+
+    public static Screen createSettingsScreen(Component component, Player player, Screen screen) {
+        return new PipBoySettingsScreen(component, player, screen);
     }
 
     @SubscribeEvent

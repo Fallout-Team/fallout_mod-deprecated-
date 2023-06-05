@@ -23,7 +23,6 @@ public class PipBoyRadioScreen extends PipBoyScreen {
     private static final ResourceLocation RADIO = new ResourceLocation(FalloutMod.MOD_ID,"textures/gui/pipboy_radio.png");
 
     private Player player;
-    private EnumPipColor getPipColor = EnumPipColor.GREEN;
     private int textColor;
     protected int imageWidth = 256;
     protected int imageHeight = 131;
@@ -37,7 +36,7 @@ public class PipBoyRadioScreen extends PipBoyScreen {
         super(component, player);
         this.player = player;
         this.oldScreen = currentScreen;
-        if(this.getPipColor == EnumPipColor.GREEN) {
+        if(getGetPipColor() == EnumPipColor.GREEN) {
             this.textColor = 0x4CFF00;
             this.texture = RADIO;
         }
@@ -56,7 +55,7 @@ public class PipBoyRadioScreen extends PipBoyScreen {
 
         //Screens
         stats = new Button((i) + (this.imageWidth/2) + -85,l + 10,25,10, Component.nullToEmpty("[[]]"), (p_96786_) -> {
-            toStats(this);
+            toStats(this, this.getGetPipColor());
         });
         inv = new Button((i) + (this.imageWidth/2) - 50,l + 10,25,10, Component.nullToEmpty("[[]]"), (p_96786_) -> {
             openInventoryScreen();
@@ -66,7 +65,7 @@ public class PipBoyRadioScreen extends PipBoyScreen {
         });
 
         //Top buttons
-        options = new Button((i) + (this.imageWidth/2) + -112,l + 10,10,10, Component.nullToEmpty("[]"), (p_96786_) -> {
+        options = new Button((i) + (this.imageWidth/2) + -113,l + 10,10,10, Component.nullToEmpty("[]"), (p_96786_) -> {
             toOptions(this);
         });
         capture = new Button((i) + (this.imageWidth/2) + 100,l + 10,10,10, Component.nullToEmpty("[]"), (p_96786_) -> {
