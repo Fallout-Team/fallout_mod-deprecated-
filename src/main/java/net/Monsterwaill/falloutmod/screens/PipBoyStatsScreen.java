@@ -1,5 +1,6 @@
 package net.Monsterwaill.falloutmod.screens;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.Monsterwaill.falloutmod.FalloutMod;
@@ -21,6 +22,12 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import org.lwjgl.glfw.GLFWAllocateCallback;
+import org.lwjgl.glfw.GLFWAllocateCallbackI;
+import org.lwjgl.glfw.GLFWAllocator;
+import org.lwjgl.opengl.GL11;
+
+import java.nio.FloatBuffer;
 
 public class PipBoyStatsScreen extends PipBoyScreen {
 
@@ -39,11 +46,9 @@ public class PipBoyStatsScreen extends PipBoyScreen {
         super(component, player);
         this.player = player;
         this.oldScreen = currentScreen;
-        if(getGetPipColor() == EnumPipColor.GREEN) {
-            this.textColor = 0x4CFF00;
-            this.texture = STAT;
-        }
-
+        //setPipColor(color);
+        this.textColor = 0x4CFF00;
+        this.texture = STAT;
         if (this.minecraft == null) {
             this.minecraft = this.getMinecraft();
         }
@@ -52,10 +57,10 @@ public class PipBoyStatsScreen extends PipBoyScreen {
     @Override
     protected void init() {
         super.init();
+
         int l = (this.height - this.imageHeight) / 2;
         int i = (this.width - this.imageWidth) / 2;
         assert this.minecraft != null;
-
         //Screens
         this.main = new Button((i) + (this.imageWidth/2) + -85,l + 10,25,10, Component.nullToEmpty("[[]]"), (p_96786_) -> {
             this.backToMain(oldScreen);
@@ -102,6 +107,13 @@ public class PipBoyStatsScreen extends PipBoyScreen {
 
     public void renderBg(PoseStack pPoseStack) {
         RenderSystem.setShaderTexture(0, this.texture);
+        if(getGetPipColor() == EnumPipColor.GREEN) {
+            RenderSystem.setShaderColor(1, 1, 1, 1);
+        } else {
+            RenderSystem.setShaderColor(1, 0, 0, 1);
+        }
+
+        System.out.println(getGetPipColor());
         int i = (this.width - this.imageWidth) / 2;
         int l = (this.height - this.imageHeight) / 2;
         blit(pPoseStack, i, l, 0, 0, this.imageWidth, this.imageHeight);

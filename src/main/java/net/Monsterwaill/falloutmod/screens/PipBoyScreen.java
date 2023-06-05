@@ -45,11 +45,8 @@ public class PipBoyScreen extends Screen {
     public PipBoyScreen(Component component, Player player) {
         super(component);
         this.player = player;
-        if(this.getPipColor == EnumPipColor.GREEN) {
-            this.textColor = 0x4CFF00;
-            this.texture = GREEN_DFLT;
-        }
-
+        this.textColor = 0x4CFF00;
+        this.texture = GREEN_DFLT;
         if (this.minecraft == null) {
             this.minecraft = this.getMinecraft();
         }
@@ -64,7 +61,7 @@ public class PipBoyScreen extends Screen {
 
         //Screens
         this.stats = new Button((i) + (this.imageWidth/2) + -85,l + 10,25,10, Component.nullToEmpty("[[]]"), (p_96786_) -> {
-            this.toStats(this, this.getGetPipColor());
+            this.toStats(this);
         });
         this.radio = new Button((i) + (this.imageWidth/2) + 57,l + 10,25,10, Component.nullToEmpty("[[]]"), (p_96786_) -> {
             this.toRadio(this);
@@ -95,8 +92,8 @@ public class PipBoyScreen extends Screen {
     }
 
     //@TODO: condense into one method - Loqor
-    public void toStats(Screen currentScreen, EnumPipColor color) {
-        Screen nextScreen = new PipBoyStatsScreen(Component.translatable("Stats"), this.player, currentScreen, color);
+    public void toStats(Screen currentScreen) {
+        Screen nextScreen = new PipBoyStatsScreen(Component.translatable("Stats"), this.player, currentScreen, getGetPipColor());
         this.minecraft.getInstance().setScreen(nextScreen);
     }
 
@@ -110,14 +107,18 @@ public class PipBoyScreen extends Screen {
         this.minecraft.getInstance().setScreen(new InventoryScreen(this.player));
     }
 
-    public void changePipBoyColor() {
-       this.getPipColor = getNextPipColor(this.getPipColor);
-       System.out.println(this.getPipColor);
-        Network.sendToServer(new UpdatePipColorC2SPacket(this.getPipColor, this.player.getUUID()));
+    public void changePipBoyColor(EnumPipColor color) {
+       this.getPipColor = getNextPipColor(color);
+       System.out.println(color);
+        Network.sendToServer(new UpdatePipColorC2SPacket(color, this.player.getUUID()));
     }
 
     public EnumPipColor getGetPipColor() {
         return this.getPipColor;
+    }
+
+    public void setPipColor(EnumPipColor color) {
+        this.getPipColor = color;
     }
 
     public static EnumPipColor getNextPipColor(EnumPipColor pipColor) {
@@ -143,11 +144,10 @@ public class PipBoyScreen extends Screen {
     public void fakeout() {
         this.onClose();
         this.player.displayClientMessage(Component.translatable("Press F2, ya dingus."), true);
-        System.out.println(getGetPipColor());
     }
 
     public void toOptions(Screen currentScreen) {
-        Screen nextScreen = new PipBoyOptionsScreen(Component.translatable("Options"), this.player, currentScreen,this.getPipColor);
+        Screen nextScreen = new PipBoyOptionsScreen(Component.translatable("Options"), this.player, currentScreen);
         this.minecraft.getInstance().setScreen(nextScreen);
     }
 

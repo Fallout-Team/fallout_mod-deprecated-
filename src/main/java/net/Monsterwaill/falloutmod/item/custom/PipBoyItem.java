@@ -21,10 +21,11 @@ import java.util.List;
 
 public class PipBoyItem extends Item {
 
-    public EnumPipColor pipColorName = EnumPipColor.GREEN;
+    public EnumPipColor pipColorName;
 
     public PipBoyItem(Properties properties) {
         super(properties);
+        setPipColorName(EnumPipColor.GREEN);
     }
 
     public void setPipColorName(EnumPipColor color) {

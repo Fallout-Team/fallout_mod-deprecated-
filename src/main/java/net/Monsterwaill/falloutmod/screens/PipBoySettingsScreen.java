@@ -19,6 +19,7 @@ public class PipBoySettingsScreen extends PipBoyScreen {
     private int textColor;
     protected int imageWidth = 256;
     protected int imageHeight = 131;
+    private EnumPipColor color;
     private ResourceLocation texture;
     private Button pipBoyColoring, quit;
     private final Screen oldScreen;
@@ -28,11 +29,8 @@ public class PipBoySettingsScreen extends PipBoyScreen {
         super(component, player);
         this.player = player;
         this.oldScreen = currentScreen;
-        if(getGetPipColor() == EnumPipColor.GREEN) {
-            this.textColor = 0x4CFF00;
-            this.texture = OPTIONS;
-        }
-
+        this.textColor = 0x4CFF00;
+        this.texture = OPTIONS;
         if (this.minecraft == null) {
             this.minecraft = this.getMinecraft();
         }
@@ -46,7 +44,7 @@ public class PipBoySettingsScreen extends PipBoyScreen {
         assert this.minecraft != null;
 
         this.pipBoyColoring = new Button((i) + 80, (l) + 23,130,10, Component.nullToEmpty("[]"), (p_96786_) -> {
-            changePipBoyColor();
+            //changePipBoyColor(this.color);
         });
         this.quit = new Button((i) + 20, (l) + 55,50,10, Component.nullToEmpty("[]"), (p_96786_) -> {
             this.backToMain(oldScreen);

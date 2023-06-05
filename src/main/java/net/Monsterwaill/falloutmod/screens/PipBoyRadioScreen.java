@@ -36,11 +36,6 @@ public class PipBoyRadioScreen extends PipBoyScreen {
         super(component, player);
         this.player = player;
         this.oldScreen = currentScreen;
-        if(getGetPipColor() == EnumPipColor.GREEN) {
-            this.textColor = 0x4CFF00;
-            this.texture = RADIO;
-        }
-
         if (this.minecraft == null) {
             this.minecraft = this.getMinecraft();
         }
@@ -55,7 +50,7 @@ public class PipBoyRadioScreen extends PipBoyScreen {
 
         //Screens
         stats = new Button((i) + (this.imageWidth/2) + -85,l + 10,25,10, Component.nullToEmpty("[[]]"), (p_96786_) -> {
-            toStats(this, this.getGetPipColor());
+            toStats(this);
         });
         inv = new Button((i) + (this.imageWidth/2) - 50,l + 10,25,10, Component.nullToEmpty("[[]]"), (p_96786_) -> {
             openInventoryScreen();

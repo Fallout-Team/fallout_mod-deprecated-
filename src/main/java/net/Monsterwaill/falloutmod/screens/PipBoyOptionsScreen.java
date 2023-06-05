@@ -27,16 +27,13 @@ public class PipBoyOptionsScreen extends PipBoyScreen {
     private Player player;
     private Component component;
 
-    public PipBoyOptionsScreen(Component component, Player player, Screen currentScreen, EnumPipColor color) {
+    public PipBoyOptionsScreen(Component component, Player player, Screen currentScreen) {
         super(component, player);
         this.player = player;
         this.oldScreen = currentScreen;
         this.component = component;
-        if(getGetPipColor() == EnumPipColor.GREEN) {
-            this.textColor = 0x4CFF00;
-            this.texture = OPTIONS;
-        }
-
+        this.textColor = 0x4CFF00;
+        this.texture = OPTIONS;
         if (this.minecraft == null) {
             this.minecraft = this.getMinecraft();
         }
@@ -71,7 +68,8 @@ public class PipBoyOptionsScreen extends PipBoyScreen {
     }
 
     public void toSettings(Screen currentScreen) {
-        this.minecraft.getInstance().setScreen(ClientModEvents.createSettingsScreen(this.component, this.player, currentScreen));
+        Screen nextScreen = new PipBoySettingsScreen(Component.translatable("Stats"), this.player, currentScreen);
+        this.minecraft.getInstance().setScreen(nextScreen);
     }
 
     @Override

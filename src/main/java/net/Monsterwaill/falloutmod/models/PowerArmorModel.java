@@ -5,17 +5,21 @@ package net.Monsterwaill.falloutmod.models;// Made with Blockbench 4.7.4
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.Monsterwaill.falloutmod.FalloutMod;
+import net.minecraft.client.model.AgeableListModel;
 import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 
-public class PowerArmor<T extends Entity> extends EntityModel<T> {
+public class PowerArmorModel<T extends Entity> extends HumanoidModel {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("falloutmod", "powerarmor"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(FalloutMod.MOD_ID, "power_armor_model"), "main");
 	private final ModelPart LeftLeg;
 	private final ModelPart RightLeg;
 	private final ModelPart Head;
@@ -23,7 +27,8 @@ public class PowerArmor<T extends Entity> extends EntityModel<T> {
 	private final ModelPart LeftArm;
 	private final ModelPart Torso;
 
-	public PowerArmor(ModelPart root) {
+	public PowerArmorModel(ModelPart root) {
+		super(root);
 		this.LeftLeg = root.getChild("LeftLeg");
 		this.RightLeg = root.getChild("RightLeg");
 		this.Head = root.getChild("Head");
@@ -67,11 +72,6 @@ public class PowerArmor<T extends Entity> extends EntityModel<T> {
 		PartDefinition Torso = partdefinition.addOrReplaceChild("Torso", CubeListBuilder.create().texOffs(0, 11).addBox(-4.0F, -25.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.001F)), PartPose.offset(0.0F, 24.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);
-	}
-
-	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
 	}
 
 	@Override
