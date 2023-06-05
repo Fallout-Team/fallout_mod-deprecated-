@@ -3,9 +3,12 @@ package net.Monsterwaill.falloutmod.events;
 import net.Monsterwaill.falloutmod.FalloutMod;
 import net.Monsterwaill.falloutmod.block.entities.FalloutBlockEntities;
 import net.Monsterwaill.falloutmod.data.FalloutConstants;
+import net.Monsterwaill.falloutmod.entities.FalloutEntities;
 import net.Monsterwaill.falloutmod.item.custom.PipBoyItem;
+import net.Monsterwaill.falloutmod.models.PowerArmor;
 import net.Monsterwaill.falloutmod.models.TARDISModel;
 import net.Monsterwaill.falloutmod.renderers.TARDISRenderer;
+import net.Monsterwaill.falloutmod.renderers.entity.PowerArmorRenderer;
 import net.Monsterwaill.falloutmod.screens.EnumPipColor;
 import net.Monsterwaill.falloutmod.screens.PipBoyStatsScreen;
 import net.Monsterwaill.falloutmod.util.Keybinding;
@@ -37,11 +40,13 @@ public class ClientModEvents
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers renderers) {
         renderers.registerBlockEntityRenderer(FalloutBlockEntities.TARDIS_BLOCK_ENTITY.get(), TARDISRenderer::new);
+        renderers.registerEntityRenderer(FalloutEntities.POWER_ARMOR.get(), PowerArmorRenderer::new);
     }
 
     @SubscribeEvent
     public static void registerLayerDefinition(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(TARDISModel.LAYER_LOCATION,TARDISModel::createBodyLayer);
+        event.registerLayerDefinition(PowerArmor.LAYER_LOCATION, PowerArmor::createBodyLayer);
     }
 
     public static Screen createPipBoyScreen(Component component, Player player, EnumPipColor pipColor) {

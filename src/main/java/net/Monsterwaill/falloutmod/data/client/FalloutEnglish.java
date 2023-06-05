@@ -3,6 +3,7 @@ package net.Monsterwaill.falloutmod.data.client;
 import net.Monsterwaill.falloutmod.FalloutMod;
 import net.Monsterwaill.falloutmod.block.FalloutBlocks;
 import net.Monsterwaill.falloutmod.data.FalloutConstants;
+import net.Monsterwaill.falloutmod.entities.FalloutEntities;
 import net.Monsterwaill.falloutmod.item.FalloutItems;
 import net.Monsterwaill.falloutmod.util.Keybinding;
 import net.minecraft.ChatFormatting;
@@ -41,5 +42,8 @@ public class FalloutEnglish extends LanguageProvider {
         /*Keybinds*/
         add(Keybinding.KEY_CATEGORY_FALLOUT, "Fallout Mod");
         add(Keybinding.KEY_OPEN_PIP_BOY, "Open Pip-Boy 2500");
+
+        /*Entities*/
+        add(FalloutEntities.POWER_ARMOR.get(),"Power Armor");
     }
 }

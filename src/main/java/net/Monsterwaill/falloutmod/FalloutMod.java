@@ -5,6 +5,7 @@ import net.Monsterwaill.falloutmod.block.FalloutBlocks;
 import net.Monsterwaill.falloutmod.block.entities.FalloutBlockEntities;
 import net.Monsterwaill.falloutmod.data.client.FalloutEnglish;
 import net.Monsterwaill.falloutmod.data.server.FalloutBlockTags;
+import net.Monsterwaill.falloutmod.entities.FalloutEntities;
 import net.Monsterwaill.falloutmod.item.FalloutItems;
 import net.Monsterwaill.falloutmod.network.Network;
 import net.Monsterwaill.falloutmod.sounds.FalloutSounds;
@@ -31,6 +32,7 @@ public class FalloutMod {
         FalloutBlocks.BLOCKS.register(modEventBus);
         FalloutBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         FalloutSounds.SOUNDS.register(modEventBus);
+        FalloutEntities.ENTITY_TYPES.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::onGatherData);
