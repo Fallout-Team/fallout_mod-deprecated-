@@ -33,7 +33,6 @@ public class RadioBlockEntity extends BlockEntity {
             return InteractionResult.SUCCESS;
         }
 
-
         return InteractionResult.SUCCESS;
     }
 

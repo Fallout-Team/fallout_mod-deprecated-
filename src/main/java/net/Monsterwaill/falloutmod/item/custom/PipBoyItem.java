@@ -1,6 +1,10 @@
 package net.Monsterwaill.falloutmod.item.custom;
 
 import net.Monsterwaill.falloutmod.data.FalloutConstants;
+import net.Monsterwaill.falloutmod.events.ClientModEvents;
+import net.Monsterwaill.falloutmod.screens.EnumPipColor;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
@@ -17,14 +21,27 @@ import java.util.List;
 
 public class PipBoyItem extends Item {
 
+    public EnumPipColor pipColorName = EnumPipColor.GREEN;
+
     public PipBoyItem(Properties properties) {
         super(properties);
+    }
+
+    public void setPipColorName(EnumPipColor color) {
+        this.pipColorName = color;
+    }
+
+    public EnumPipColor getPipColorName() {
+        return this.pipColorName;
     }
 
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
         if(Screen.hasShiftDown()) {
             components.add(Component.translatable(FalloutConstants.PIPBOY_USAGE));
+            String __colorNames = this.pipColorName.toString();
+            String pipColorName = __colorNames.replaceAll("_", " ");
+            components.add(Component.literal(pipColorName));
         } else {
             components.add(Component.translatable(FalloutConstants.ITEM_SHIFT));
         }
@@ -33,18 +50,6 @@ public class PipBoyItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        if(!level.isClientSide() && hand == InteractionHand.OFF_HAND) {
-            messageRandomNumber(player);
-            player.getCooldowns().addCooldown(this, 50);
-        }
-
         return super.use(level, player, hand);
-    }
-    private void messageRandomNumber(Player player) {
-        player.sendSystemMessage(Component.translatable(FalloutConstants.NUMBER).append(" " + getRandomNumber()));
-    }
-
-    private int getRandomNumber() {
-        return RandomSource.createNewThreadLocalInstance().nextIntBetweenInclusive(1, 11);
     }
 }

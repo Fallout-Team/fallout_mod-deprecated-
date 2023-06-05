@@ -2,6 +2,7 @@ package net.Monsterwaill.falloutmod.network;
 
 import net.Monsterwaill.falloutmod.FalloutMod;
 import net.Monsterwaill.falloutmod.network.packets.UpdateExteriorAnimationS2CPacket;
+import net.Monsterwaill.falloutmod.network.packets.UpdatePipColorC2SPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -31,6 +32,11 @@ public class Network {
                 .decoder(UpdateExteriorAnimationS2CPacket::decode)
                 .encoder(UpdateExteriorAnimationS2CPacket::encode)
                 .consumerMainThread(UpdateExteriorAnimationS2CPacket::handle)
+                .add();
+        net.messageBuilder(UpdatePipColorC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(UpdatePipColorC2SPacket::decode)
+                .encoder(UpdatePipColorC2SPacket::encode)
+                .consumerMainThread(UpdatePipColorC2SPacket::handle)
                 .add();
     }
 

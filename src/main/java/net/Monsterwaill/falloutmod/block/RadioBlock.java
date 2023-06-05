@@ -95,21 +95,24 @@ public class RadioBlock extends BaseEntityBlock {
     // Definitely a better way of doing this but im just doing it as an example so
     public static SoundEvent getRandomDiscSound() {
         Random random = new Random();
-        int choice = random.nextInt(1,12); // 12 for the 12 different discs
+        int choice = random.nextInt(1,15); // 15 for the 15 different discs
 
         return switch (choice) {
-            case 1 -> SoundEvents.MUSIC_DISC_BLOCKS;
+            case 1 -> SoundEvents.MUSIC_DISC_13;
             case 2 -> SoundEvents.MUSIC_DISC_CAT;
-            case 3 -> SoundEvents.MUSIC_DISC_CHIRP;
-            case 4 -> SoundEvents.MUSIC_DISC_FAR;
-            case 5 -> SoundEvents.MUSIC_DISC_MALL;
-            case 6 -> SoundEvents.MUSIC_DISC_MELLOHI;
-            case 7 -> SoundEvents.MUSIC_DISC_OTHERSIDE;
-            case 8 -> SoundEvents.MUSIC_DISC_PIGSTEP;
-            case 9 -> SoundEvents.MUSIC_DISC_STAL;
-            case 10 -> SoundEvents.MUSIC_DISC_STRAD;
-            case 11 -> SoundEvents.MUSIC_DISC_WAIT;
-            case 12 -> SoundEvents.MUSIC_DISC_WARD;
+            case 3 -> SoundEvents.MUSIC_DISC_BLOCKS;
+            case 4 -> SoundEvents.MUSIC_DISC_CHIRP;
+            case 5 -> SoundEvents.MUSIC_DISC_FAR;
+            case 6 -> SoundEvents.MUSIC_DISC_MALL;
+            case 7 -> SoundEvents.MUSIC_DISC_MELLOHI;
+            case 8 -> SoundEvents.MUSIC_DISC_STAL;
+            case 9 -> SoundEvents.MUSIC_DISC_STRAD;
+            case 10 -> SoundEvents.MUSIC_DISC_WARD;
+            case 11 -> SoundEvents.MUSIC_DISC_11;
+            case 12 -> SoundEvents.MUSIC_DISC_WAIT;
+            case 13 -> SoundEvents.MUSIC_DISC_OTHERSIDE;
+            case 14 -> SoundEvents.MUSIC_DISC_5;
+            case 15 -> SoundEvents.MUSIC_DISC_PIGSTEP;
             default -> SoundEvents.ANVIL_HIT;
         };
     }

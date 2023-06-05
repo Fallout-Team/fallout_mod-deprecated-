@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.Monsterwaill.falloutmod.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "fallout_mod.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+    "PlayerRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
