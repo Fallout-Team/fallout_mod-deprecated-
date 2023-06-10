@@ -23,10 +23,11 @@ public class FalloutTokiPona extends LanguageProvider {
         add(FalloutItems.PIPBOY.get(), "ilo Pip-Boy 2500");
         add(FalloutItems.CAP.get(), "mani");
 
+
         /*Blocks*/
         add(FalloutBlocks.TARDIS_BLOCK.get(), "TARDIS");
         add(FalloutBlocks.RADIO.get(), "jan lawa Radio pi wawa jaki");
-
+        add(FalloutBlocks.TYPEWRITER.get(), "ilo sitelen");
         /*Messages*/
         add(FalloutConstants.PIPBOY_USAGE, ChatFormatting.DARK_GREEN + "sina wile kepeken ilo Pip-Boy 2500 la o luka e ona lon luka pi wawa lili. sina wile e sona mute la o lukin e lipu sona Pip-Boy tan kulupu Valut Tech");
         add(FalloutConstants.ITEM_SHIFT, ChatFormatting.DARK_GREEN + "o luka e nena");
@@ -40,8 +41,7 @@ public class FalloutTokiPona extends LanguageProvider {
 
         /*Keybinds*/
         add(Keybinding.KEY_CATEGORY_FALLOUT, "Fallout Mod");
-        //Open pip boy not yet fully translated
-        add(Keybinding.KEY_OPEN_PIP_BOY, "Open ilo Pip-Boy 2500");
+        add(Keybinding.KEY_OPEN_PIP_BOY, "mi lukin e sitelen Pip-Boy 2500");
 
         /*Entities*/
         add(FalloutEntities.POWER_ARMOR.get(),"len wawa");

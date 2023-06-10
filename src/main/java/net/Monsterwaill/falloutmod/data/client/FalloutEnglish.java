@@ -27,6 +27,7 @@ public class FalloutEnglish extends LanguageProvider {
         /*Blocks*/
         add(FalloutBlocks.TARDIS_BLOCK.get(), "TARDIS");
         add(FalloutBlocks.RADIO.get(), "Radiation King Radio");
+        add(FalloutBlocks.TYPEWRITER.get(), "Typewriter");
 
         /*Messages*/
         add(FalloutConstants.PIPBOY_USAGE, ChatFormatting.DARK_GREEN + "The Pip-Boy 2500 is only operational when held in the offhand slot. For more info, please refer to your included Pip-Boy manual provided by Vault Tech.");
