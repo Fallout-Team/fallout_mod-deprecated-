@@ -143,7 +143,7 @@ public class RadioBlock extends BaseEntityBlock {
         RadioBlockEntity radio = (RadioBlockEntity) level.getBlockEntity(pos);
 
         if(!isPlaying(state)) {
-            // I dont evne know what kind of crack loqor was smoking
+            // I don't even know what kind of crack Loqor was smoking
             radio.playRandomDisc(pos);
         }
         else{
