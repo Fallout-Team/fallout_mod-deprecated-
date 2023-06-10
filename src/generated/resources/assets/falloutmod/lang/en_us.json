@@ -1,6 +1,8 @@
 {
   "block.falloutmod.radio": "Radiation King Radio",
   "block.falloutmod.tardis": "TARDIS",
+  "block.falloutmod.typewriter": "Typewriter",
+  "entity.falloutmod.power_armor": "Power Armor",
   "item.falloutmod.cap": "Bottle Cap",
   "item.falloutmod.creativetab": "Creative Tab",
   "item.falloutmod.holotape": "Holotape",
