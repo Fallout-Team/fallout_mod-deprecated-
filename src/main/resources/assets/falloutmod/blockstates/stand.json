@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "falloutmod:block/stand",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "falloutmod:block/stand",
+      "y": 0
+    },
+    "facing=south": {
+      "model": "falloutmod:block/stand",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "falloutmod:block/stand",
+      "y": 270
+    }
+  }
+}

@@ -12,15 +12,19 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 
-public class TypewriterBlock extends HorizontalDirectionalBlock {
-    public TypewriterBlock(Properties properties) {
+
+public class StandBlock extends HorizontalDirectionalBlock {
+
+    public StandBlock(Properties properties) {
         super(properties);
     }
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(HorizontalDirectionalBlock.FACING);
     }
+
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
         return this.defaultBlockState().setValue(FACING, blockPlaceContext.getHorizontalDirection().getOpposite());
@@ -38,7 +42,8 @@ public class TypewriterBlock extends HorizontalDirectionalBlock {
             case EAST -> EAST_AABB;
             case SOUTH -> SOUTH_AABB;
             case WEST -> WEST_AABB;
-            default -> throw new RuntimeException("Invalid facing direction in getShape() for TypewriterBlock");
+            default -> throw new RuntimeException("Invalid facing direction in getShape() for StandBlock");
         };
     }
+
 }
