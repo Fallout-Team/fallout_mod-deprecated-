@@ -7,12 +7,12 @@
   "item.falloutmod.cap": "Bottle Cap",
   "item.falloutmod.creativetab": "Creative Tab",
   "item.falloutmod.holotape": "Holotape",
-  "item.falloutmod.pip_boy": "Pip-Boy 2500",
+  "item.falloutmod.pip_boy": "Pip-Boy 2000 MK VI",
   "itemGroup.fallouttab": "Fallout Mod",
   "key.category.falloutmod.fallout": "Fallout Mod",
   "key.falloutmod.open_pip_boy": "Open Pip-Boy 2500",
   "message.falloutmod.item_shift": "§2Press Shift",
   "message.falloutmod.number": "Number",
-  "message.falloutmod.pipboy_usage": "§2The Pip-Boy 2500 is only operational when held in the offhand slot. For more info, please refer to your included Pip-Boy manual provided by Vault Tech.",
-  "screen.falloutmod.Pip-Boy 2500": "§aPip-Boy 2500"
+  "message.falloutmod.pipboy_usage": "§2The Pip-Boy 2000 MK VI is only operational when held in the offhand slot. For more info, please refer to your included Pip-Boy manual provided by Vault Tech.",
+  "screen.falloutmod.Pip-Boy 2500": "§aPip-Boy 2000 MK VI"
 }
