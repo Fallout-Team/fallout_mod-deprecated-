@@ -64,9 +64,11 @@ public class StandBlock extends HorizontalDirectionalBlock implements EntityBloc
                     standBlockEntity.dropHandIfPresent(player);
                     standBlockEntity.setPipboy(player.getMainHandItem().copy());
                     player.getMainHandItem().shrink(1);
+                    StandBlockEntity.sendUpdates(standBlockEntity, worldIn, pos, state);
                     return InteractionResult.SUCCESS;
                 }
                 standBlockEntity.dropHandIfPresent(player);
+                StandBlockEntity.sendUpdates(standBlockEntity, worldIn, pos, state);
             }
         }
 

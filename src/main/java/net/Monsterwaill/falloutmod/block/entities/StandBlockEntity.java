@@ -6,8 +6,8 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,8 +16,8 @@ public class StandBlockEntity extends BlockEntity {
     private ItemStack pipboy;
 
 
-    public StandBlockEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
-        super(blockEntityType, blockPos, blockState);
+    public StandBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(FalloutBlockEntities.PIP_BOY_STAND.get(), blockPos, blockState);
         this.pipboy = ItemStack.EMPTY;
     }
 
@@ -56,6 +56,7 @@ public class StandBlockEntity extends BlockEntity {
                 clearContent();
             }
         }
+
     }
 
 
@@ -70,6 +71,12 @@ public class StandBlockEntity extends BlockEntity {
         CompoundTag compoundTag = new CompoundTag();
         saveAdditional(compoundTag);
         return compoundTag;
+    }
+
+    public static void sendUpdates(BlockEntity block, Level level, BlockPos blockPos, BlockState blockState) {
+        level.updateNeighbourForOutputSignal(blockPos, blockState.getBlock());
+        level.sendBlockUpdated(blockPos, level.getBlockState(blockPos), level.getBlockState(blockPos), 3);
+        block.setChanged();
     }
 
     @Override

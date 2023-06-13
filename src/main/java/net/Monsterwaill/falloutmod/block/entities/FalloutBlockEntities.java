@@ -15,6 +15,6 @@ public class FalloutBlockEntities {
     public static final RegistryObject<BlockEntityType<RadioBlockEntity>> RADIO_BLOCK_ENTITY = BLOCK_ENTITIES.register("radio_block_entity",
             () -> BlockEntityType.Builder.of(RadioBlockEntity::new, FalloutBlocks.RADIO.get()).build(null));
 
-    public static final RegistryObject<BlockEntityType<RadioBlockEntity>> PIP_BOY_STAND = BLOCK_ENTITIES.register("stand_block_entity",
-            () -> BlockEntityType.Builder.of(RadioBlockEntity::new, FalloutBlocks.RADIO.get()).build(null));
+    public static final RegistryObject<BlockEntityType<StandBlockEntity>> PIP_BOY_STAND = BLOCK_ENTITIES.register("stand_block_entity",
+            () -> BlockEntityType.Builder.of(StandBlockEntity::new, FalloutBlocks.STAND.get()).build(null));
 }
