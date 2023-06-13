@@ -10,9 +10,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
-public class FalloutEnglish extends LanguageProvider {
+public class FalloutEnglishUS extends LanguageProvider {
 
-    public FalloutEnglish(DataGenerator gen) {
+    public FalloutEnglishUS(DataGenerator gen) {
         super(gen, FalloutMod.MOD_ID, "en_us");
     }
 

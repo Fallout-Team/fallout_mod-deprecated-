@@ -3,7 +3,7 @@ package net.Monsterwaill.falloutmod;
 
 import net.Monsterwaill.falloutmod.block.FalloutBlocks;
 import net.Monsterwaill.falloutmod.block.entities.FalloutBlockEntities;
-import net.Monsterwaill.falloutmod.data.client.FalloutEnglish;
+import net.Monsterwaill.falloutmod.data.client.FalloutEnglishUS;
 import net.Monsterwaill.falloutmod.data.server.FalloutBlockTags;
 import net.Monsterwaill.falloutmod.entities.FalloutEntities;
 import net.Monsterwaill.falloutmod.item.FalloutItems;
@@ -43,7 +43,7 @@ public class FalloutMod {
     public void onGatherData(GatherDataEvent e) {
         DataGenerator generator = e.getGenerator();
         ExistingFileHelper existingFileHelper = e.getExistingFileHelper();
-        generator.addProvider(e.includeClient(), new FalloutEnglish(generator));
+        generator.addProvider(e.includeClient(), new FalloutEnglishUS(generator));
         generator.addProvider(e.includeServer(), new FalloutBlockTags(generator, existingFileHelper));
     }
 
