@@ -1,5 +1,4 @@
 package net.Monsterwaill.falloutmod.block;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -10,8 +9,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-
-
 
 public class StandBlock extends HorizontalDirectionalBlock {
 
@@ -30,10 +27,10 @@ public class StandBlock extends HorizontalDirectionalBlock {
         return this.defaultBlockState().setValue(FACING, blockPlaceContext.getHorizontalDirection().getOpposite());
     }
     // Shapes for each direction so the hitbox is the right size
-    public static final VoxelShape NORTH_AABB = Block.box(1, 0, 1, 15, 6, 15);
-    public static final VoxelShape EAST_AABB = Block.box(1, 0, 1, 15, 6, 15);
-    public static final VoxelShape SOUTH_AABB = Block.box(1, 0, 1, 15, 6, 15);
-    public static final VoxelShape WEST_AABB = Block.box(1, 0, 1, 15, 6, 15);
+    public static final VoxelShape NORTH_AABB = Block.box(1, 0, 2, 15, 14, 14);
+    public static final VoxelShape EAST_AABB = Block.box(2, 0, 1, 14, 14, 15);
+    public static final VoxelShape SOUTH_AABB = Block.box(1, 0, 2, 15, 14, 14);
+    public static final VoxelShape WEST_AABB = Block.box(2, 0, 1, 14, 14, 15);
 
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
@@ -45,5 +42,4 @@ public class StandBlock extends HorizontalDirectionalBlock {
             default -> throw new RuntimeException("Invalid facing direction in getShape() for StandBlock");
         };
     }
-
 }
