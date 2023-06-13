@@ -7,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -25,10 +24,12 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class RadioBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -39,7 +40,7 @@ public class RadioBlock extends BaseEntityBlock {
     public static final VoxelShape NORTH_AABB = Block.box(0, 0, 2.5, 16, 12, 13.5); // I don't think AABB is the right name for these, but thats how that idiot Loqor does it.
     public static final VoxelShape EAST_AABB = Block.box(2.5, 0, 0, 13.5, 12, 16);
     public static final VoxelShape SOUTH_AABB = Block.box(0, 0, 2.5, 16, 12, 13.5);
-    public static final VoxelShape WEST_AABB = Block.box(2.5, 0, 0, 13.5, 12, 16);;
+    public static final VoxelShape WEST_AABB = Block.box(2.5, 0, 0, 13.5, 12, 16);
 
     // Make sure the radio has the correct facings set in its blockstate
     // And also make sure its render_type is cutout
@@ -90,28 +91,11 @@ public class RadioBlock extends BaseEntityBlock {
     }
 
     // Definitely a better way of doing this but im just doing it as an example so
-    public static SoundEvent getRandomDiscSound() {
-        Random random = new Random();
-        int choice = random.nextInt(1,15); // 15 for the 15 different discs
-
-        return switch (choice) {
-            case 1 -> SoundEvents.MUSIC_DISC_13;
-            case 2 -> SoundEvents.MUSIC_DISC_CAT;
-            case 3 -> SoundEvents.MUSIC_DISC_BLOCKS;
-            case 4 -> SoundEvents.MUSIC_DISC_CHIRP;
-            case 5 -> SoundEvents.MUSIC_DISC_FAR;
-            case 6 -> SoundEvents.MUSIC_DISC_MALL;
-            case 7 -> SoundEvents.MUSIC_DISC_MELLOHI;
-            case 8 -> SoundEvents.MUSIC_DISC_STAL;
-            case 9 -> SoundEvents.MUSIC_DISC_STRAD;
-            case 10 -> SoundEvents.MUSIC_DISC_WARD;
-            case 11 -> SoundEvents.MUSIC_DISC_11;
-            case 12 -> SoundEvents.MUSIC_DISC_WAIT;
-            case 13 -> SoundEvents.MUSIC_DISC_OTHERSIDE;
-            case 14 -> SoundEvents.MUSIC_DISC_5;
-            case 15 -> SoundEvents.MUSIC_DISC_PIGSTEP;
-            default -> SoundEvents.ANVIL_HIT;
-        };
+    public static SoundEvent getRandomDiscSound(RandomSource random) {
+        ArrayList<SoundEvent> sounds = new ArrayList<>();
+        Collections.addAll(sounds, ForgeRegistries.SOUND_EVENTS.getValues().toArray(new SoundEvent[0]));
+        sounds.removeIf(soundEvent -> !soundEvent.getLocation().getPath().contains("music_disc"));
+        return sounds.get(random.nextInt(sounds.size()));
     }
 
     // Storing this value in block states is easier than making packets as it makes sure that it is synced across server and client.
@@ -125,9 +109,9 @@ public class RadioBlock extends BaseEntityBlock {
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         if (isPlaying(state)) {
-            Vec3 vec3 = Vec3.atBottomCenterOf(pos).add(0.0D, (double) 1.2F, 0.0D);
+            Vec3 vec3 = Vec3.atBottomCenterOf(pos).add(0.0D, 1.2F, 0.0D);
             float f = random.nextInt(4) / 24.0F;
-            level.addParticle(ParticleTypes.NOTE, vec3.x(), vec3.y(), vec3.z(), 0D, (double) f, 0.0D); // @TODO too many of these particels + they're all GREEN
+            level.addParticle(ParticleTypes.NOTE, vec3.x(), vec3.y(), vec3.z(), 0D, f, 0.0D); // @TODO too many of these particels + they're all GREEN
         }
     }
 
@@ -140,8 +124,7 @@ public class RadioBlock extends BaseEntityBlock {
         RadioBlockEntity radio = (RadioBlockEntity) level.getBlockEntity(pos);
 
         if(!isPlaying(state)) {
-            // I don't even know what kind of crack Loqor was smoking
-            radio.playRandomDisc(pos);
+            radio.playRandomDisc(pos, level.random);
         }
         else{
             radio.stopSound();
