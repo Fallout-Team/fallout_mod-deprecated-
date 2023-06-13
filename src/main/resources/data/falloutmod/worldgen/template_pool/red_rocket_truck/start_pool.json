@@ -1,0 +1,18 @@
+{
+  "name": "falloutmod:red_rocket_truck/start_pool",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+
+      "weight": 1,
+      "element": {
+        "location": "falloutmod:red_rocket_truck",
+        "processors": "minecraft:empty",
+        "projection": "terrain_adapting",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

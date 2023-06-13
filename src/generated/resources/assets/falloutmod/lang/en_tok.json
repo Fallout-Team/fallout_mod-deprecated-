@@ -1,0 +1,18 @@
+{
+  "block.falloutmod.radio": "jan lawa Radio pi wawa jaki",
+  "block.falloutmod.stand": "jo Pip-Boy 2500",
+  "block.falloutmod.tardis": "TARDIS",
+  "block.falloutmod.typewriter": "ilo sitelen",
+  "entity.falloutmod.power_armor": "len wawa",
+  "item.falloutmod.cap": "mani",
+  "item.falloutmod.creativetab": "kulupu Fallout Mod",
+  "item.falloutmod.holotape": "ilo pi jo kalama",
+  "item.falloutmod.pip_boy": "ilo Pip-Boy 2500",
+  "itemGroup.fallouttab": "Fallout Mod",
+  "key.category.falloutmod.fallout": "Fallout Mod",
+  "key.falloutmod.open_pip_boy": "mi lukin e sitelen Pip-Boy 2500",
+  "message.falloutmod.item_shift": "§2o luka e nena",
+  "message.falloutmod.number": "Number",
+  "message.falloutmod.pipboy_usage": "§2sina wile kepeken ilo Pip-Boy 2500 la o luka e ona lon luka pi wawa lili. sina wile e sona mute la o lukin e lipu sona Pip-Boy tan kulupu Valut Tech",
+  "screen.falloutmod.Pip-Boy 2500": "§ailo Pip-Boy 2500"
+}
