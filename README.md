@@ -2,6 +2,8 @@
 Fallout™ and its contents are created and owned by Bethesda™.
 Under the CC BY-SA 4.0 License.
 
+To remove the custom menu, go into the configs and turn it off :)
+
 Credits:
     
     Development:
