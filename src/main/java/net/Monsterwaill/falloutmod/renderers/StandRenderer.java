@@ -25,7 +25,7 @@ public class StandRenderer implements BlockEntityRenderer<StandBlockEntity> {
         BlockState blockstate = standBlockEntity.getBlockState();
         float blockRotation = blockstate.getValue(HorizontalDirectionalBlock.FACING).toYRot();
         poseStack.scale(0.6F, 0.6F, 0.6F);
-        poseStack.mulPose(Vector3f.YP.rotationDegrees(-blockRotation -180));
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(blockRotation -180));
         poseStack.mulPose(Vector3f.XP.rotationDegrees(23));
         poseStack.mulPose(Vector3f.ZP.rotationDegrees(0));
         Minecraft.getInstance().getItemRenderer().renderStatic(standBlockEntity.getPipboy(), ItemTransforms.TransformType.FIXED, packedLight, OverlayTexture.NO_OVERLAY, poseStack, bufferSource, Minecraft.getInstance().player.getId());
