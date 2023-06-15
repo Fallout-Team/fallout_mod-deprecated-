@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "falloutmod:red_rocket_car",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642136473,
+    "spacing": 250,
+    "separation": 100,
+    "type": "minecraft:random_spread"
+  }
+}
