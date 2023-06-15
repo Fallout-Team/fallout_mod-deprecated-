@@ -3,9 +3,11 @@ package net.Monsterwaill.falloutmod.events;
 import net.Monsterwaill.falloutmod.FalloutMod;
 import net.Monsterwaill.falloutmod.block.entities.FalloutBlockEntities;
 import net.Monsterwaill.falloutmod.entities.FalloutEntities;
+import net.Monsterwaill.falloutmod.models.BlastDoorModel;
 import net.Monsterwaill.falloutmod.models.PowerArmorModel;
 import net.Monsterwaill.falloutmod.models.TARDISModel;
 import net.Monsterwaill.falloutmod.models.layers.PowerArmorLayer;
+import net.Monsterwaill.falloutmod.renderers.BlastDoorRenderer;
 import net.Monsterwaill.falloutmod.renderers.StandRenderer;
 import net.Monsterwaill.falloutmod.renderers.TARDISRenderer;
 import net.Monsterwaill.falloutmod.screens.EnumPipColor;
@@ -45,6 +47,7 @@ public class ClientModEvents
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers renderers) {
         renderers.registerBlockEntityRenderer(FalloutBlockEntities.TARDIS_BLOCK_ENTITY.get(), TARDISRenderer::new);
+        renderers.registerBlockEntityRenderer(FalloutBlockEntities.BLAST_DOOR.get(), BlastDoorRenderer::new);
         renderers.registerBlockEntityRenderer(FalloutBlockEntities.PIP_BOY_STAND.get(), StandRenderer::new);
         //renderers.registerEntityRenderer(FalloutEntities.POWER_ARMOR.get(), PowerArmorRenderer::new);
     }
@@ -52,6 +55,7 @@ public class ClientModEvents
     @SubscribeEvent
     public static void registerLayerDefinition(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(TARDISModel.LAYER_LOCATION,TARDISModel::createBodyLayer);
+        event.registerLayerDefinition(BlastDoorModel.LAYER_LOCATION,BlastDoorModel::createBodyLayer);
         event.registerLayerDefinition(PowerArmorModel.LAYER_LOCATION, PowerArmorModel::createBodyLayer);
     }
 

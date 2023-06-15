@@ -1,6 +1,7 @@
 package net.Monsterwaill.falloutmod.block.entities;
 
 import net.Monsterwaill.falloutmod.FalloutMod;
+import net.Monsterwaill.falloutmod.block.BlastDoorBlock;
 import net.Monsterwaill.falloutmod.block.FalloutBlocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -17,4 +18,6 @@ public class FalloutBlockEntities {
 
     public static final RegistryObject<BlockEntityType<StandBlockEntity>> PIP_BOY_STAND = BLOCK_ENTITIES.register("stand_block_entity",
             () -> BlockEntityType.Builder.of(StandBlockEntity::new, FalloutBlocks.STAND.get()).build(null));
+    public static final RegistryObject<BlockEntityType<BlastDoorBlockEntity>> BLAST_DOOR = BLOCK_ENTITIES.register("blast_door_block_entity",
+            () -> BlockEntityType.Builder.of(BlastDoorBlockEntity::new, FalloutBlocks.BLAST_DOOR.get()).build(null));
 }

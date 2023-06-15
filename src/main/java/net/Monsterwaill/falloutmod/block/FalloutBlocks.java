@@ -24,6 +24,7 @@ public class FalloutBlocks {
     public static final RegistryObject<TARDISBlock> TARDIS_BLOCK = registerBlockOnly("tardis", () -> new TARDISBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion()));
     public static final RegistryObject<Block> TYPEWRITER = register("typewriter", () -> new TypewriterBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion()));
     public static final RegistryObject<Block> STAND = register("stand", () -> new StandBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL).noOcclusion()));
+    public static final RegistryObject<Block> BLAST_DOOR = register("blast_door", () -> new BlastDoorBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL).noOcclusion()));
     /**
      * Registers a Block and BlockItem to the ItemGroup of your choice
      */
