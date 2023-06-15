@@ -1,0 +1,14 @@
+{
+  "blast_door_open": {
+    "sounds": [
+      "falloutmod:blast_door_open"
+    ],
+    "subtitle": "subtitle.falloutmod.blast_door_open"
+  },
+  "dematerialise": {
+    "sounds": [
+      "falloutmod:dematerialise"
+    ],
+    "subtitle": "subtitle.falloutmod.dematerialise"
+  }
+}

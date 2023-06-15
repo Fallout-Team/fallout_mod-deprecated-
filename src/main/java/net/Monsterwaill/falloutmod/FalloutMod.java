@@ -5,6 +5,7 @@ import net.Monsterwaill.falloutmod.block.FalloutBlocks;
 import net.Monsterwaill.falloutmod.block.entities.FalloutBlockEntities;
 import net.Monsterwaill.falloutmod.data.client.FalloutEnglishUK;
 import net.Monsterwaill.falloutmod.data.client.FalloutEnglishUS;
+import net.Monsterwaill.falloutmod.data.client.FalloutSoundGen;
 import net.Monsterwaill.falloutmod.data.client.FalloutTokiPona;
 import net.Monsterwaill.falloutmod.data.server.FalloutBlockTags;
 import net.Monsterwaill.falloutmod.entities.FalloutEntities;
@@ -48,6 +49,7 @@ public class FalloutMod {
         generator.addProvider(e.includeClient(), new FalloutEnglishUS(generator));
         generator.addProvider(e.includeClient(), new FalloutEnglishUK(generator));
         generator.addProvider(e.includeClient(), new FalloutTokiPona(generator));
+        generator.addProvider(e.includeClient(), new FalloutSoundGen(generator,existingFileHelper));
         generator.addProvider(e.includeServer(), new FalloutBlockTags(generator, existingFileHelper));
     }
 
