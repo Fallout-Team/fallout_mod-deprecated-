@@ -69,23 +69,19 @@ public class BlastDoorModel<T extends Entity> extends EntityModel<T> {
 	public void render(BlastDoorBlockEntity entity, PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
 		if (isOpen(entity.getBlockState())) {
 			if (door_bottom.y < 35) {
-				door_bottom.y = door_bottom.y + 0.05f;
+				door_bottom.y = door_bottom.y + 0.12f;
 			}
 			if (door_top.y > -11) {
-				door_top.y = door_top.y - 0.08f;
+				door_top.y = door_top.y - 0.37f;
 			}
 		} else {
 			if (door_bottom.y > 24) {
-				door_bottom.y = door_bottom.y - 0.1f;
+				door_bottom.y = door_bottom.y - 0.16f;
 			}
-			if (door_top.y < 24) {
-				door_top.y = door_top.y + 0.33f;
+			if (door_top.y < 23.8) {
+				door_top.y = door_top.y + 0.5f;
 			}
 		}
-
-//		door_bottom.y = 35;
-//		door_top.y = -11;
-
 		renderToBuffer(poseStack,vertexConsumer,packedLight,packedOverlay,red,green,blue,alpha);
 	}
 }
