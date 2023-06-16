@@ -29,6 +29,7 @@ public class FalloutTokiPona extends LanguageProvider {
         add(FalloutBlocks.RADIO.get(), "jan lawa Radio pi wawa jaki");
         add(FalloutBlocks.TYPEWRITER.get(), "ilo sitelen");
         add(FalloutBlocks.STAND.get(), "jo Pip-Boy 2500");
+        add(FalloutBlocks.BLAST_DOOR.get(), "lupa insa Vault");
         /*Messages*/
         add(FalloutConstants.PIPBOY_USAGE, ChatFormatting.DARK_GREEN + "sina wile kepeken ilo Pip-Boy 2500 la o luka e ona lon luka pi wawa lili. sina wile e sona mute la o lukin e lipu sona Pip-Boy tan kulupu Valut Tech");
         add(FalloutConstants.ITEM_SHIFT, ChatFormatting.DARK_GREEN + "o luka e nena");

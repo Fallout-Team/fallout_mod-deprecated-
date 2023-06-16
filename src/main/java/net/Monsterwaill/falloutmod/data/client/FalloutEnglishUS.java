@@ -29,6 +29,7 @@ public class FalloutEnglishUS extends LanguageProvider {
         add(FalloutBlocks.RADIO.get(), "Radiation King Radio");
         add(FalloutBlocks.TYPEWRITER.get(), "Typewriter");
         add(FalloutBlocks.STAND.get(), "Pip-Boy Stand");
+        add(FalloutBlocks.BLAST_DOOR.get(), "Vault Interior Door");
 
         /*Messages*/
         add(FalloutConstants.PIPBOY_USAGE, ChatFormatting.DARK_GREEN + "The Pip-Boy 2500 is only operational when held in the offhand slot. For more info, please refer to your included Pip-Boy manual provided by Vault Tech.");
