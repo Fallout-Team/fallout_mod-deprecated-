@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -44,9 +45,9 @@ public class CommonEvents {
                 tardisBlockEntity.getAnimation().setupAnimation();
             }
         }
-        if (block instanceof BlastDoorBlock blast) {
-            createAdjacentBarriers((Level) event.getLevel(),event.getPos(),event.getState());
-        }
+//        if (block instanceof BlastDoorBlock blast) {
+//            createAdjacentBarriers(event.getLevel(),event.getPos(),event.getState(), (Player) event.getEntity());
+//        }
     }
 
     @SubscribeEvent
