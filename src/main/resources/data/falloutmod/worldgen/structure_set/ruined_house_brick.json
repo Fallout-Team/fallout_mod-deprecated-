@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "falloutmod:ruined_house_brick",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642136477,
+    "spacing": 125,
+    "separation": 50,
+    "type": "minecraft:random_spread"
+  }
+}

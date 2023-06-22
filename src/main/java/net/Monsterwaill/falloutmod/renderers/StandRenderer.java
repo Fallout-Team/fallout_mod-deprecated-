@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -26,9 +27,28 @@ public class StandRenderer implements BlockEntityRenderer<StandBlockEntity> {
         float blockRotation = blockstate.getValue(HorizontalDirectionalBlock.FACING).toYRot();
         poseStack.scale(0.6F, 0.6F, 0.6F);
         poseStack.mulPose(Vector3f.YP.rotationDegrees(blockRotation -180));
-        poseStack.mulPose(Vector3f.XP.rotationDegrees(23));
-        poseStack.mulPose(Vector3f.ZP.rotationDegrees(0));
+        Direction direction = blockstate.getValue(HorizontalDirectionalBlock.FACING);
+        if (direction == Direction.NORTH) {
+            poseStack.mulPose(Vector3f.XP.rotationDegrees(23));
+            poseStack.mulPose(Vector3f.ZP.rotationDegrees(0));
+        }
+        else if (direction == Direction.SOUTH) {
+            poseStack.mulPose(Vector3f.XP.rotationDegrees(23));
+            poseStack.mulPose(Vector3f.ZP.rotationDegrees(0));
+        }
+        else if (direction == Direction.EAST) {
+            poseStack.mulPose(Vector3f.XP.rotationDegrees(156));
+            poseStack.mulPose(Vector3f.ZP.rotationDegrees(180));
+        }
+        else if (direction == Direction.WEST) {
+            poseStack.mulPose(Vector3f.XP.rotationDegrees(23));
+            poseStack.mulPose(Vector3f.ZP.rotationDegrees(0));
+        }
+
+
+
         Minecraft.getInstance().getItemRenderer().renderStatic(standBlockEntity.getPipboy(), ItemTransforms.TransformType.FIXED, packedLight, OverlayTexture.NO_OVERLAY, poseStack, bufferSource, Minecraft.getInstance().player.getId());
         poseStack.popPose();
+
     }
 }
