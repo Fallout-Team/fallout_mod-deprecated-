@@ -10,11 +10,13 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BarrierBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -98,7 +100,7 @@ public class BlastDoorBlock extends DirectionalBaseEntityBlock {
 
     @Override
     public void onPlace(BlockState p_60566_, Level p_60567_, BlockPos p_60568_, BlockState p_60569_, boolean p_60570_) {
-        createAdjacentBarriers(p_60567_,p_60568_,p_60566_);
+        createAdjacentBarriers(p_60567_,p_60568_,p_60566_, null);
 
         super.onPlace(p_60566_, p_60567_, p_60568_, p_60569_, p_60570_);
     }
@@ -138,7 +140,7 @@ public class BlastDoorBlock extends DirectionalBaseEntityBlock {
         setOpened(level, pos, state, val);
     }
 
-    public static void createAdjacentBarriers(LevelAccessor level, BlockPos pos, BlockState state) {
+    public static void createAdjacentBarriers(Level level, BlockPos pos, BlockState state, @Nullable Player player) {
         if (!(state.getBlock() instanceof BlastDoorBlock)) return;
 
         Direction direction = state.getValue(FACING);
@@ -161,17 +163,27 @@ public class BlastDoorBlock extends DirectionalBaseEntityBlock {
 
         boolean flag = i && j && k && l && m;
 
-        if (!flag) destroyBarriersAndSelf(level,state,pos);
+        if (!flag) destroyBarriersAndSelf(level,state,pos,player);
     }
 
-    public static void destroyBarriersAndSelf(LevelAccessor level, BlockState state, BlockPos pos) {
+    public static void destroyBarriersAndSelf(Level level, BlockState state, BlockPos pos) {
         if (!(state.getBlock() instanceof BlastDoorBlock)) return;
 
         destroyBarriers(level,state,pos);
         level.removeBlock(pos,true);
     }
 
-    public static void destroyBarriers(LevelAccessor level, BlockState state, BlockPos pos) {
+    public static void destroyBarriersAndSelf(Level level, BlockState state, BlockPos pos, @Nullable Player player) {
+        destroyBarriersAndSelf(level, state, pos);
+
+        if (player != null) {
+            player.getInventory().placeItemBackInInventory(new ItemStack(FalloutBlocks.BLAST_DOOR.get()));
+        } else {
+            level.addFreshEntity(new ItemEntity(level,pos.getX(),pos.getY(),pos.getZ(),new ItemStack(FalloutBlocks.BLAST_DOOR.get().asItem())));
+        }
+    }
+
+    public static void destroyBarriers(Level level, BlockState state, BlockPos pos) {
         if (!(state.getBlock() instanceof BlastDoorBlock)) return;
 
         Direction direction = state.getValue(FACING);
@@ -192,18 +204,18 @@ public class BlastDoorBlock extends DirectionalBaseEntityBlock {
         }
     }
 
-    private static void destroyBarrierIfMatching(LevelAccessor level, BlockPos pos) {
+    private static void destroyBarrierIfMatching(Level level, BlockPos pos) {
         destroyBlockIfMatching(level,pos,Blocks.BARRIER.defaultBlockState());
     }
-    private static void destroyBlockIfMatching(LevelAccessor level, BlockPos pos, BlockState state) {
+    private static void destroyBlockIfMatching(Level level, BlockPos pos, BlockState state) {
         if (level.getBlockState(pos) == state) level.removeBlock(pos,true);
     }
 
-    private static boolean placeBarrierIfNotAir(LevelAccessor level,BlockPos pos) {
+    private static boolean placeBarrierIfNotAir(Level level,BlockPos pos) {
         return placeBlockIfNotAir(level, Blocks.BARRIER.defaultBlockState(),pos);
     }
 
-    private static boolean placeBlockIfNotAir(LevelAccessor level,BlockState block,BlockPos pos) {
+    private static boolean placeBlockIfNotAir(Level level,BlockState block,BlockPos pos) {
         if (!level.getBlockState(pos).isAir()) return false;
 
         level.setBlock(pos,block,2);
