@@ -27,12 +27,9 @@ public class BlastDoorRenderer implements BlockEntityRenderer<BlastDoorBlockEnti
     @Override
     public void render(BlastDoorBlockEntity entity, float partialTick, PoseStack stack, MultiBufferSource source, int packedLight, int packedOverlay) {
         Direction direction = (entity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING));
-        boolean opened = isOpen(entity.getBlockState());
 
         stack.mulPose(Vector3f.YP.rotationDegrees(direction.toYRot()));
         stack.mulPose(Vector3f.XN.rotationDegrees(180.0f));
-
-        // Usually, I would fix issues with movements in the model as a per model thing but i cannot be bothered and we're only having one exterior soo
 
 //        stack.scale(0.5f,0.5f,0.5f);
         stack.translate(0, -1.5f, 0);

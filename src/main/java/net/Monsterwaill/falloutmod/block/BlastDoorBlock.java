@@ -1,5 +1,6 @@
 package net.Monsterwaill.falloutmod.block;
 
+import net.Monsterwaill.falloutmod.block.entities.BlastDoorBlockEntity;
 import net.Monsterwaill.falloutmod.block.entities.FalloutBlockEntities;
 import net.Monsterwaill.falloutmod.sounds.FalloutSounds;
 import net.minecraft.core.BlockPos;
@@ -8,6 +9,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -22,7 +24,10 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.GameEventListener;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -31,15 +36,15 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class BlastDoorBlock extends DirectionalBaseEntityBlock {
-    public static final BooleanProperty OPENED = BooleanProperty.create("opened");
-
+    public static final BooleanProperty OPENED = BlockStateProperties.OPEN;
+    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     private static final VoxelShape OPENED_AABB = Block.box(0, 0, 0, 0, 0, 0);
     private static final VoxelShape AABB_SOUTH_NORTH = Block.box(-16,0,0,16,48,16);
     private static final VoxelShape AABB_EAST_WEST = Block.box(0,0,-16,16,48,16);
 
     protected BlastDoorBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPENED,false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPENED,false).setValue(POWERED,false));
     }
 
     @Override
@@ -68,10 +73,9 @@ public class BlastDoorBlock extends DirectionalBaseEntityBlock {
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level p_153212_, BlockState p_153213_, BlockEntityType<T> p_153214_) {
-        return super.getTicker(p_153212_, p_153213_, p_153214_);
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level p_153212_, BlockState p_153213_, BlockEntityType<T> type) {
+        return type == FalloutBlockEntities.BLAST_DOOR.get() ? BlastDoorBlockEntity::tick : null;
     }
-
     @Nullable
     @Override
     public <T extends BlockEntity> GameEventListener getListener(ServerLevel p_221121_, T p_221122_) {
@@ -82,6 +86,7 @@ public class BlastDoorBlock extends DirectionalBaseEntityBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(OPENED);
+        builder.add(POWERED);
     }
 
     @Override
@@ -96,6 +101,12 @@ public class BlastDoorBlock extends DirectionalBaseEntityBlock {
         createAdjacentBarriers(p_60567_,p_60568_,p_60566_);
 
         super.onPlace(p_60566_, p_60567_, p_60568_, p_60569_, p_60570_);
+    }
+
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos pos2, boolean p_52781_) {
+        if (isPowered(state) == level.hasNeighborSignal(pos)) return;
+
+        setPowered(level,pos,state,level.hasNeighborSignal(pos));
     }
 
     @Override
@@ -117,6 +128,14 @@ public class BlastDoorBlock extends DirectionalBaseEntityBlock {
             destroyBarriers(level,state,pos);
             level.playSound(null,pos, FalloutSounds.BLAST_DOOR_OPEN.get(), SoundSource.AMBIENT,1f,1f);
         }
+    }
+
+    public static boolean isPowered(BlockState state) {
+        return state.getValue(POWERED);
+    }
+    public static void setPowered(Level level,BlockPos pos,BlockState state, boolean val) {
+        level.setBlockAndUpdate(pos,state.setValue(POWERED,val));
+        setOpened(level, pos, state, val);
     }
 
     public static void createAdjacentBarriers(LevelAccessor level, BlockPos pos, BlockState state) {

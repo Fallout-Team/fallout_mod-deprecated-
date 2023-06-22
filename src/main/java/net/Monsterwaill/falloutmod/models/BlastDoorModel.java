@@ -26,8 +26,8 @@ public class BlastDoorModel<T extends Entity> extends EntityModel<T> {
 	private final ModelPart door_bottom;
 
 	public BlastDoorModel(ModelPart root) {
-		this.door_top = root.getChild("door_top");
-		this.door_bottom = root.getChild("door_bottom");
+		door_top = root.getChild("door_top");
+		door_bottom = root.getChild("door_bottom");
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -67,21 +67,25 @@ public class BlastDoorModel<T extends Entity> extends EntityModel<T> {
 	}
 
 	public void render(BlastDoorBlockEntity entity, PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		if (isOpen(entity.getBlockState())) {
-			if (door_bottom.y < 35) {
-				door_bottom.y = door_bottom.y + 0.12f;
-			}
-			if (door_top.y > -11) {
-				door_top.y = door_top.y - 0.37f;
-			}
-		} else {
-			if (door_bottom.y > 24) {
-				door_bottom.y = door_bottom.y - 0.16f;
-			}
-			if (door_top.y < 23.8) {
-				door_top.y = door_top.y + 0.5f;
-			}
-		}
-		renderToBuffer(poseStack,vertexConsumer,packedLight,packedOverlay,red,green,blue,alpha);
+		this.door_bottom.y = entity.getBottomY();
+		this.door_top.y = entity.getTopY();
+
+//		if (isOpen(entity.getBlockState())) {
+//			if (this.door_bottom.y < 35) {
+//				this.door_bottom.y = this.door_bottom.y + 0.12f;
+//			}
+//			if (this.door_top.y > -11) {
+//				this.door_top.y = this.door_top.y - 0.37f;
+//			}
+//		} else {
+//			if (this.door_bottom.y > 24) {
+//				this.door_bottom.y = this.door_bottom.y - 0.16f;
+//			}
+//			if (this.door_top.y < 23.8) {
+//				this.door_top.y = this.door_top.y + 0.5f;
+//			}
+//		}
+
+		this.renderToBuffer(poseStack,vertexConsumer,packedLight,packedOverlay,red,green,blue,alpha);
 	}
 }
