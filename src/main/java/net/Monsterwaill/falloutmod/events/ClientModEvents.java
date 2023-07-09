@@ -2,13 +2,12 @@ package net.Monsterwaill.falloutmod.events;
 
 import net.Monsterwaill.falloutmod.FalloutMod;
 import net.Monsterwaill.falloutmod.block.entities.FalloutBlockEntities;
-import net.Monsterwaill.falloutmod.models.BlastDoorModel;
-import net.Monsterwaill.falloutmod.models.PowerArmourModel;
-import net.Monsterwaill.falloutmod.models.SteveSkinModel;
-import net.Monsterwaill.falloutmod.models.TARDISModel;
+import net.Monsterwaill.falloutmod.entities.FalloutEntities;
+import net.Monsterwaill.falloutmod.models.*;
 import net.Monsterwaill.falloutmod.renderers.BlastDoorRenderer;
 import net.Monsterwaill.falloutmod.renderers.StandRenderer;
 import net.Monsterwaill.falloutmod.renderers.TARDISRenderer;
+import net.Monsterwaill.falloutmod.renderers.entity.PowerArmourEntityRenderer;
 import net.Monsterwaill.falloutmod.screens.EnumPipColor;
 import net.Monsterwaill.falloutmod.screens.PipBoyStatsScreen;
 import net.Monsterwaill.falloutmod.util.Keybinding;
@@ -39,6 +38,7 @@ public class ClientModEvents
         renderers.registerBlockEntityRenderer(FalloutBlockEntities.TARDIS_BLOCK_ENTITY.get(), TARDISRenderer::new);
         renderers.registerBlockEntityRenderer(FalloutBlockEntities.BLAST_DOOR.get(), BlastDoorRenderer::new);
         renderers.registerBlockEntityRenderer(FalloutBlockEntities.PIP_BOY_STAND.get(), StandRenderer::new);
+        renderers.registerEntityRenderer(FalloutEntities.POWER_ARMOR_ENTITY.get(), PowerArmourEntityRenderer::new);
         //renderers.registerEntityRenderer(FalloutEntities.POWER_ARMOR.get(), PowerArmorRenderer::new);
     }
 
@@ -48,6 +48,8 @@ public class ClientModEvents
         event.registerLayerDefinition(BlastDoorModel.LAYER_LOCATION,BlastDoorModel::createBodyLayer);
         event.registerLayerDefinition(PowerArmourModel.LAYER_LOCATION, PowerArmourModel::createBodyLayer);
         event.registerLayerDefinition(SteveSkinModel.LAYER_LOCATION,() -> LayerDefinition.create(PlayerModel.createMesh(CubeDeformation.NONE,false),64,64));
+        event.registerLayerDefinition(HumanoidEntityModel.LAYER_LOCATION,() -> LayerDefinition.create(PlayerModel.createMesh(CubeDeformation.NONE,false),64,64));
+        event.registerLayerDefinition(PowerArmourEntityModel.LAYER_LOCATION,() -> LayerDefinition.create(PlayerModel.createMesh(CubeDeformation.NONE,false),64,64));
     }
 
     public static Screen createPipBoyScreen(Component component, Player player, EnumPipColor pipColor) {
@@ -57,6 +59,7 @@ public class ClientModEvents
     @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {
         event.register(Keybinding.PIPBOY_KEY);
+        event.register(Keybinding.TAKE_OFF_POWER_KEY);
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)

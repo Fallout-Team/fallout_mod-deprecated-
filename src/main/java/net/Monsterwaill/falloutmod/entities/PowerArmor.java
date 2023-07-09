@@ -9,6 +9,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+@Deprecated(forRemoval = true)
 public class PowerArmor extends LivingEntity {
 
     protected PowerArmor(EntityType<? extends LivingEntity> p_20966_, Level p_20967_) {

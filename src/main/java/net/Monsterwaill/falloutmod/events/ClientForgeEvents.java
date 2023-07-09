@@ -3,6 +3,8 @@ package net.Monsterwaill.falloutmod.events;
 import net.Monsterwaill.falloutmod.FalloutMod;
 import net.Monsterwaill.falloutmod.data.FalloutConstants;
 import net.Monsterwaill.falloutmod.item.custom.PipBoyItem;
+import net.Monsterwaill.falloutmod.network.Network;
+import net.Monsterwaill.falloutmod.network.packets.TakeOffPowerArmourC2SPacket;
 import net.Monsterwaill.falloutmod.util.Keybinding;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -21,6 +23,9 @@ public class ClientForgeEvents {
             if(Minecraft.getInstance().player.getItemBySlot(EquipmentSlot.OFFHAND).getItem() instanceof PipBoyItem pipBoyItem && !(Minecraft.getInstance().player.getItemBySlot(EquipmentSlot.MAINHAND).getItem() instanceof PipBoyItem)) {
                 Minecraft.getInstance().setScreen(ClientModEvents.createPipBoyScreen(Component.translatable(FalloutConstants.PIPBOY_SCREEN), Minecraft.getInstance().player, pipBoyItem.getPipColorName()));
             }
+        }
+        if (Keybinding.TAKE_OFF_POWER_KEY.consumeClick()) {
+            Network.sendToServer(new TakeOffPowerArmourC2SPacket());
         }
     }
 

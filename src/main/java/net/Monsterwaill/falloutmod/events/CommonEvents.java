@@ -5,6 +5,7 @@ import net.Monsterwaill.falloutmod.block.TARDISBlock;
 import net.Monsterwaill.falloutmod.block.entities.TARDISBlockEntity;
 import net.Monsterwaill.falloutmod.entities.FalloutEntities;
 import net.Monsterwaill.falloutmod.entities.PowerArmor;
+import net.Monsterwaill.falloutmod.entities.PowerArmourEntity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -29,10 +30,5 @@ public class CommonEvents {
 //        if (block instanceof BlastDoorBlock blast) {
 //            createAdjacentBarriers(event.getLevel(),event.getPos(),event.getState(), (Player) event.getEntity());
 //        }
-    }
-
-    @SubscribeEvent
-    public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
-        event.put(FalloutEntities.POWER_ARMOR.get(), PowerArmor.setAttributes());
     }
 }

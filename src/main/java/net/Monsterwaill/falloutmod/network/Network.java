@@ -1,6 +1,7 @@
 package net.Monsterwaill.falloutmod.network;
 
 import net.Monsterwaill.falloutmod.FalloutMod;
+import net.Monsterwaill.falloutmod.network.packets.TakeOffPowerArmourC2SPacket;
 import net.Monsterwaill.falloutmod.network.packets.UpdateExteriorAnimationS2CPacket;
 import net.Monsterwaill.falloutmod.network.packets.UpdatePipColorC2SPacket;
 import net.minecraft.resources.ResourceLocation;
@@ -37,6 +38,11 @@ public class Network {
                 .decoder(UpdatePipColorC2SPacket::decode)
                 .encoder(UpdatePipColorC2SPacket::encode)
                 .consumerMainThread(UpdatePipColorC2SPacket::handle)
+                .add();
+        net.messageBuilder(TakeOffPowerArmourC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(TakeOffPowerArmourC2SPacket::new)
+                .encoder(TakeOffPowerArmourC2SPacket::toBytes)
+                .consumerMainThread(TakeOffPowerArmourC2SPacket::handle)
                 .add();
     }
 

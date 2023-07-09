@@ -18,5 +18,11 @@ public class FalloutEntities {
                     () -> EntityType.Builder.of(PowerArmor::new, MobCategory.CREATURE)
                             .sized(1, 2.2f)
                             .build(new ResourceLocation(FalloutMod.MOD_ID, "power_armor").toString()));
+    public static final RegistryObject<EntityType<PowerArmourEntity>> POWER_ARMOR_ENTITY =
+            ENTITY_TYPES.register("power_armor_entity",
+                    () -> EntityType.Builder.<PowerArmourEntity>of(PowerArmourEntity::new, MobCategory.MISC)
+                            .sized(0.6f,1.8f)
+                            .build(new ResourceLocation(FalloutMod.MOD_ID,"power_armor_entity").toString()));
+
 
 }
