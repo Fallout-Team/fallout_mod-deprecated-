@@ -2,6 +2,7 @@ package net.Monsterwaill.falloutmod.item.custom.armour;
 
 import net.Monsterwaill.falloutmod.item.FalloutArmourMaterials;
 import net.Monsterwaill.falloutmod.models.PowerArmourModel;
+import net.Monsterwaill.falloutmod.models.SteveSkinModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.Entity;
@@ -31,7 +32,8 @@ public class PowerArmourItem extends ArmorItem {
             @Override
             public @NotNull HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
 //                PowerArmourItem item = (PowerArmourItem) itemStack.getItem(); // frick you craig im casting
-                return new PowerArmourModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(PowerArmourModel.LAYER_LOCATION));
+//                return new PowerArmourModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(PowerArmourModel.LAYER_LOCATION));
+                return new SteveSkinModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(SteveSkinModel.LAYER_LOCATION));
             }
         });
 

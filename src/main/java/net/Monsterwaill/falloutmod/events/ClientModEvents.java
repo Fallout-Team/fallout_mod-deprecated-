@@ -4,6 +4,7 @@ import net.Monsterwaill.falloutmod.FalloutMod;
 import net.Monsterwaill.falloutmod.block.entities.FalloutBlockEntities;
 import net.Monsterwaill.falloutmod.models.BlastDoorModel;
 import net.Monsterwaill.falloutmod.models.PowerArmourModel;
+import net.Monsterwaill.falloutmod.models.SteveSkinModel;
 import net.Monsterwaill.falloutmod.models.TARDISModel;
 import net.Monsterwaill.falloutmod.renderers.BlastDoorRenderer;
 import net.Monsterwaill.falloutmod.renderers.StandRenderer;
@@ -12,6 +13,9 @@ import net.Monsterwaill.falloutmod.screens.EnumPipColor;
 import net.Monsterwaill.falloutmod.screens.PipBoyStatsScreen;
 import net.Monsterwaill.falloutmod.util.Keybinding;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
@@ -43,6 +47,7 @@ public class ClientModEvents
         event.registerLayerDefinition(TARDISModel.LAYER_LOCATION,TARDISModel::createBodyLayer);
         event.registerLayerDefinition(BlastDoorModel.LAYER_LOCATION,BlastDoorModel::createBodyLayer);
         event.registerLayerDefinition(PowerArmourModel.LAYER_LOCATION, PowerArmourModel::createBodyLayer);
+        event.registerLayerDefinition(SteveSkinModel.LAYER_LOCATION,() -> LayerDefinition.create(PlayerModel.createMesh(CubeDeformation.NONE,false),64,64));
     }
 
     public static Screen createPipBoyScreen(Component component, Player player, EnumPipColor pipColor) {
