@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "falloutmod:ruined_house_spruce",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642136476,
+    "spacing": 125,
+    "separation": 50,
+    "type": "minecraft:random_spread"
+  }
+}
