@@ -28,6 +28,7 @@ public class StandRenderer implements BlockEntityRenderer<StandBlockEntity> {
         poseStack.scale(0.6F, 0.6F, 0.6F);
         poseStack.mulPose(Vector3f.YP.rotationDegrees(blockRotation -180));
         Direction direction = blockstate.getValue(HorizontalDirectionalBlock.FACING);
+
         if (direction == Direction.NORTH) {
             poseStack.mulPose(Vector3f.XP.rotationDegrees(23));
             poseStack.mulPose(Vector3f.ZP.rotationDegrees(0));
@@ -37,8 +38,9 @@ public class StandRenderer implements BlockEntityRenderer<StandBlockEntity> {
             poseStack.mulPose(Vector3f.ZP.rotationDegrees(0));
         }
         else if (direction == Direction.EAST) {
-            poseStack.mulPose(Vector3f.XP.rotationDegrees(156));
+            poseStack.mulPose(Vector3f.XP.rotationDegrees(150));
             poseStack.mulPose(Vector3f.ZP.rotationDegrees(180));
+            poseStack.mulPose(Vector3f.YP.rotationDegrees(-1));
         }
         else if (direction == Direction.WEST) {
             poseStack.mulPose(Vector3f.XP.rotationDegrees(23));

@@ -20,6 +20,8 @@ public class FalloutItems {
             () -> new NotHoldableItem(new Item.Properties()));
     public static final RegistryObject<Item> PIPBOY = ITEMS.register("pip_boy",
             () -> new PipBoyItem(new Item.Properties().tab(FalloutTabs.FALLOUT_TAB).stacksTo(1).setNoRepair().fireResistant()));
+    public static final RegistryObject<Item> STIMPACK = ITEMS.register("stimpack",
+            () -> new Item(new Item.Properties().tab(FalloutTabs.FALLOUT_TAB).stacksTo(1).setNoRepair()));
 
     // @TODO this could be like automated and stuff but theres only one set for now so no point
     public static final RegistryObject<PowerArmourItem> POWER_HELMET = ITEMS.register("power_helmet",
