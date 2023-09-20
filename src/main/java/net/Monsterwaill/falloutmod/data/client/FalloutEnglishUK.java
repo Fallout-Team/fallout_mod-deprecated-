@@ -22,6 +22,7 @@ public class FalloutEnglishUK extends LanguageProvider {
         add(FalloutItems.CREATIVETAB.get(), "Creative Tab");
         add(FalloutItems.HOLOTAPE.get(), "Holotape");
         add(FalloutItems.PIPBOY.get(), "Pip-Boy 2000 MK VI");
+        add(FalloutItems.STIMPACKITEM.get(), "Stimpack");
         add(FalloutItems.CAP.get(), "Bottle Cap");
 
         /*Blocks*/

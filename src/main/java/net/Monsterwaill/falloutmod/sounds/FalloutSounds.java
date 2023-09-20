@@ -13,4 +13,5 @@ public class FalloutSounds {
     public static final RegistryObject<SoundEvent> DEMATERIALISE = SOUNDS.register("dematerialise", () -> new SoundEvent(new ResourceLocation(FalloutMod.MOD_ID, "dematerialise")));
     public static final RegistryObject<SoundEvent> BLAST_DOOR_OPEN = SOUNDS.register("blast_door_open", () -> new SoundEvent(new ResourceLocation(FalloutMod.MOD_ID, "blast_door_open")));
     public static final RegistryObject<SoundEvent> MAIN_MENU_MUSIC = SOUNDS.register("main_menu_music", () -> new SoundEvent(new ResourceLocation(FalloutMod.MOD_ID, "main_menu_music")));
+    public static final RegistryObject<SoundEvent> STIMPACK_USE = SOUNDS.register("stimpack_use", () -> new SoundEvent(new ResourceLocation(FalloutMod.MOD_ID, "stimpack_use")));
 }

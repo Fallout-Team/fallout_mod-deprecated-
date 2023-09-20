@@ -2,6 +2,7 @@ package net.Monsterwaill.falloutmod.item;
 
 import net.Monsterwaill.falloutmod.FalloutMod;
 import net.Monsterwaill.falloutmod.item.custom.PipBoyItem;
+import net.Monsterwaill.falloutmod.item.custom.STIMPACKITEM;
 import net.Monsterwaill.falloutmod.item.custom.armour.PowerArmourItem;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
@@ -20,8 +21,8 @@ public class FalloutItems {
             () -> new NotHoldableItem(new Item.Properties()));
     public static final RegistryObject<Item> PIPBOY = ITEMS.register("pip_boy",
             () -> new PipBoyItem(new Item.Properties().tab(FalloutTabs.FALLOUT_TAB).stacksTo(1).setNoRepair().fireResistant()));
-    public static final RegistryObject<Item> STIMPACK = ITEMS.register("stimpack",
-            () -> new Item(new Item.Properties().tab(FalloutTabs.FALLOUT_TAB).stacksTo(1).setNoRepair()));
+    public static final RegistryObject<Item> STIMPACKITEM = ITEMS.register("stimpack",
+            () -> new STIMPACKITEM(new Item.Properties().tab(FalloutTabs.FALLOUT_TAB).stacksTo(64).setNoRepair()));
 
     // @TODO this could be like automated and stuff but theres only one set for now so no point
     public static final RegistryObject<PowerArmourItem> POWER_HELMET = ITEMS.register("power_helmet",

@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "stimpack_texture.png",
-		"particle": "stimpack_texture.png"
+		"0": "falloutmod:item/stimpack_texture",
+		"particle": "falloutmod:item/stimpack_texture"
 	},
 	"elements": [
 		{

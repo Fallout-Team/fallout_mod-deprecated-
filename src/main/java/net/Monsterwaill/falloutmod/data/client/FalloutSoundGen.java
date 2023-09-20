@@ -19,6 +19,7 @@ public class FalloutSoundGen extends SoundDefinitionsProvider {
     public void registerSounds() {
         this.addBasicSound(FalloutSounds.DEMATERIALISE,"dematerialise");
         this.addBasicSound(FalloutSounds.BLAST_DOOR_OPEN,"blast_door_open");
+        this.addBasicSound(FalloutSounds.STIMPACK_USE,"stimpack_use");
     }
 
     private void addBasicSound(Supplier<SoundEvent> soundEvent, String id) {
