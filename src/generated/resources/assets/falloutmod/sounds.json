@@ -10,5 +10,11 @@
       "falloutmod:dematerialise"
     ],
     "subtitle": "subtitle.falloutmod.dematerialise"
+  },
+  "stimpack_use": {
+    "sounds": [
+      "falloutmod:stimpack_use"
+    ],
+    "subtitle": "subtitle.falloutmod.stimpack_use"
   }
 }

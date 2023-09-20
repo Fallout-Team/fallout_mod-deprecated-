@@ -20,11 +20,13 @@ public class STIMPACKITEM extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         // Play the stimpak use noise on the player
         level.playSound(null, player, FalloutSounds.STIMPACK_USE.get(), SoundSource.AMBIENT,1f,1f);
-        player.heal(6);
-        player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60));
         if(!level.isClientSide()) {
             // Cooldown timer
+            player.heal(6);
+            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60));
             player.getCooldowns().addCooldown(this, 100);
+            player.getItemInHand(hand).setCount(player.getItemInHand(hand).getCount()-1);
+
         }
         return super.use(level, player, hand);
     }
