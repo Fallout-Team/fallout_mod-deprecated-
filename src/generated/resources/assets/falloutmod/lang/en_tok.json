@@ -1,4 +1,5 @@
 {
+  "block.falloutmod.blast_door": "lupa insa Vault",
   "block.falloutmod.radio": "jan lawa Radio pi wawa jaki",
   "block.falloutmod.stand": "jo Pip-Boy 2500",
   "block.falloutmod.tardis": "TARDIS",
@@ -8,6 +9,7 @@
   "item.falloutmod.creativetab": "kulupu Fallout Mod",
   "item.falloutmod.holotape": "ilo pi jo kalama",
   "item.falloutmod.pip_boy": "ilo Pip-Boy 2500",
+  "item.falloutmod.stimpack": "Stimpack",
   "itemGroup.fallouttab": "Fallout Mod",
   "key.category.falloutmod.fallout": "Fallout Mod",
   "key.falloutmod.open_pip_boy": "mi lukin e sitelen Pip-Boy 2500",

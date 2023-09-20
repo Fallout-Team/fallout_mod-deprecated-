@@ -21,6 +21,7 @@ public class FalloutTokiPona extends LanguageProvider {
         add(FalloutItems.CREATIVETAB.get(), "kulupu Fallout Mod");
         add(FalloutItems.HOLOTAPE.get(), "ilo pi jo kalama");
         add(FalloutItems.PIPBOY.get(), "ilo Pip-Boy 2500");
+        add(FalloutItems.STIMPACKITEM.get(), "Stimpack");
         add(FalloutItems.CAP.get(), "mani");
 
 

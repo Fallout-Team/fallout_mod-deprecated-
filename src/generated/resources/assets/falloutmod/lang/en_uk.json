@@ -1,4 +1,5 @@
 {
+  "block.falloutmod.blast_door": "Vault Interior Door",
   "block.falloutmod.radio": "Radiation King Radio",
   "block.falloutmod.stand": "Pip-Boy Stand",
   "block.falloutmod.tardis": "TARDIS",
@@ -8,6 +9,7 @@
   "item.falloutmod.creativetab": "Creative Tab",
   "item.falloutmod.holotape": "Holotape",
   "item.falloutmod.pip_boy": "Pip-Boy 2000 MK VI",
+  "item.falloutmod.stimpack": "Stimpack",
   "itemGroup.fallouttab": "Fallout Mod",
   "key.category.falloutmod.fallout": "Fallout Mod",
   "key.falloutmod.open_pip_boy": "Open Pip-Boy 2500",
