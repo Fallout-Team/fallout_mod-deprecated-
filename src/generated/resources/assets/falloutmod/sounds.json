@@ -16,5 +16,11 @@
       "falloutmod:stimpack_use"
     ],
     "subtitle": "subtitle.falloutmod.stimpack_use"
+  },
+  "title_music": {
+    "sounds": [
+      "falloutmod:title_music"
+    ],
+    "subtitle": "subtitle.falloutmod.title_music"
   }
 }
