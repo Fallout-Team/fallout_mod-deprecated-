@@ -3,10 +3,12 @@ package net.Monsterwaill.falloutmod.block;
 import net.Monsterwaill.falloutmod.FalloutMod;
 import net.Monsterwaill.falloutmod.item.FalloutTabs;
 import net.Monsterwaill.falloutmod.item.FalloutItems;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.DeferredRegister;
@@ -25,6 +27,9 @@ public class FalloutBlocks {
     public static final RegistryObject<Block> TYPEWRITER = register("typewriter", () -> new TypewriterBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion()));
     public static final RegistryObject<Block> STAND = register("stand", () -> new StandBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL).noOcclusion()));
     public static final RegistryObject<Block> BLAST_DOOR = register("blast_door", () -> new BlastDoorBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL).noOcclusion()));
+    public static final RegistryObject<Block> URANIUM_ORE = register("uranium_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(6f).requiresCorrectToolForDrops(), UniformInt.of(1, 3)));
+    public static final RegistryObject<Block> DEEPSLATE_URANIUM_ORE = register("deepslate_uranium_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(6f).requiresCorrectToolForDrops(), UniformInt.of(1, 3)));
+
     /**
      * Registers a Block and BlockItem to the ItemGroup of your choice
      */

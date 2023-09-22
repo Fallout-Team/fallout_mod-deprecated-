@@ -12,6 +12,7 @@ import net.Monsterwaill.falloutmod.entities.FalloutEntities;
 import net.Monsterwaill.falloutmod.item.FalloutItems;
 import net.Monsterwaill.falloutmod.network.Network;
 import net.Monsterwaill.falloutmod.sounds.FalloutSounds;
+import net.Monsterwaill.falloutmod.world.feature.ModConfiguredFeatures;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -39,7 +40,7 @@ public class FalloutMod {
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::onGatherData);
-
+        ModConfiguredFeatures.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
