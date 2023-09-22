@@ -1,7 +1,7 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "tutorialmod:block/uranium_ore"
+    "all": "falloutmod:block/uranium_ore"
   }
 }
 

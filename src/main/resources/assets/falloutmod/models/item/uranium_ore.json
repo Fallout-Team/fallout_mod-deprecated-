@@ -1,6 +1,6 @@
 {
-  "parent": "item/generated",
+  "parent": "falloutmod:block/uranium_ore",
   "textures": {
-    "layer0": "tutorialmod:block/uranium_ore"
+    "layer0": "item/generated"
   }
 }

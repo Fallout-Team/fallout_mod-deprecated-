@@ -31,7 +31,7 @@ public class FalloutEnglishUK extends LanguageProvider {
         add(FalloutBlocks.TYPEWRITER.get(), "Typewriter");
         add(FalloutBlocks.STAND.get(), "Pip-Boy Stand");
         add(FalloutBlocks.BLAST_DOOR.get(), "Vault Interior Door");
-
+        add(FalloutBlocks.URANIUM_ORE.get(), "Uranium Ore");
         /*Messages*/
         add(FalloutConstants.PIPBOY_USAGE, ChatFormatting.DARK_GREEN + "The Pip-Boy 2000 MK VI is only operational when held in the offhand slot. For more info, please refer to your included Pip-Boy manual provided by Vault Tech.");
         add(FalloutConstants.ITEM_SHIFT, ChatFormatting.DARK_GREEN + "Press Shift");
